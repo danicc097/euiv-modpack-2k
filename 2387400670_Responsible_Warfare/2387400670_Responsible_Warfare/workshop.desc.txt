@@ -1,0 +1,70 @@
+[i]"He who wishes to fight must first count the cost. When you engage in actual fighting, if victory is long in coming, then men's weapons will grow dull and their ardor will be dampened. If you lay siege to a town, you will exhaust your strength."
+-- Sun Tzu[/i]
+
+[h1]Responsible Warfare[/h1]
+[h3]A Victoria II Clamp Mod[/h3]
+
+For historical afficiendos among the Europa Universalis IV community, who gaze at hundreds of thousands, even millions soldiers in [i]standing armies[/i] roaming the map in [i]16th century[/i] with disgust, I proudly present this mod.
+
+Inspired by Karrjaga's [url=https://steamcommunity.com/sharedfiles/filedetails/?id=684459310]Voltaire's Nightmare[/url] reduction in provincial manpower, as well as Lunar Magister's [url=https://steamcommunity.com/workshop/filedetails/?id=1662113484]Manpower Effects[/url], this very light mod aims to drastically reduce the size, as well as raise the costs, of standing armies.
+
+[h3]Goals of this mod[/h3]
+A simple goal can be put in but a single sentence: "Make Vic2 conversions suffer less on behalf of EU4's ahistoricity". 
+
+With less armies about, less ships, less manpower, Vic2 conversions are more realistic as less soldier POPs are created and economy doesn't bear the brunt of ridiculously overblown armies.
+
+As far as EU4 is concerned, Regiment Camps and Barracks now matter. Impressment offices and Soldier's households even more so. Take heed when placing buildings of trade good effects in provinces. Rely more in FL increase from vassals. Also, coalitions against many small opponents are now deadly. 
+
+[h3]"Features" (rather, penalties)[/h3]
+[list]
+[*] Development grants [i]half[/i] the manpower (and banners, and cawi),
+[*] Development grants [i]half[/i] sailors,
+[*] Land force limit from provinces is [i]quartered[/i],
+[*] Naval force limit from provinces is [i]quartered[/i],
+[*] Land force limit and manpower from HRE states and Free Cities for HREmperor are [i]quartered[/i],
+[*] Banners use [i]double[/i] manpower,
+[*] On the upside, rebel stacks are also smaller. A bit.
+[*] On a major upside, mercenaries won't count against force limit. Mostly.
+[*] Also, every fort level only now requires 2k soldiers (down from previous 3k).
+[/list]
+But wait, not all is lost, some numbers are now larger!
+[list]
+[*] Army maintenance costs are [i]almost doubled[/i],
+[*] Heavy ship maintenance costs are [i]almost doubled[/i],
+[*] Galley maintenance costs are [i]almost doubled[/i].
+[/list]
+To add insult to injury, manpower levels now have effects:
+[list]
+[*] Over 85%, they give 5% morale, representing abundance of replacements,
+[*] Under 15%, they give a stark -10% penalty to morale,
+[*] Under 5%, one enjoys the -15% penalty to morale as well as -5% penalty to discipline, representing untrained and unequipped replacements.
+[/list]
+
+[h3]But Why?[/h3]
+As all clamp mods, none of this will stop the player, and this was never the goal. 
+[olist]
+[*] Players looking to roam with hegemonic levels of soldiers will simply not use this mod. [b]That's perfectly acceptable.[/b]
+[*] Players looking to play tall and see more smaller countries survive until Vic2 conversion will probably be pleased with these changes.
+[*] Players looking to roleplay historically won't notice this mod exists.
+[/olist]
+
+[h3]Victoria 2 Conversion?[/h3]
+Yes. For those out of the loop:
+[list]
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2241203093]CK3 to EU4[/url]
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2061437373]CK2 to EU4[/url]
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=392447667]EU4 to Vic2[/url]
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=733122837]Vic2 to HoI4[/url]
+[/list]
+
+[h3]See also:[/h3]
+[list]
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2131234936]Responsible Blobbing[/url], a cautionary tale of corruption and ruin.
+[*] [url=https://steamcommunity.com/workshop/filedetails/?id=2451296932]Xorme - AI[/url], enhancements to the AI to make it smarter.
+[/list]
+
+[h3]Is this mod compatible with...?[/h3]
+Not a clue! If it is, cool, if it isn't, oh well. The mod is [i]very[/i] light and alters only precious few bits needed to work, so it should be compatible with a vast majority of mods - and for this reason I can't make it compatible with anything that it already isn't. Why don't you try yourself and see?
+
+[h3]For modders: Terms of Sharing or Altering[/h3]
+You are free to publish a variant of this mod, incorporate it into your work, change, alter, reduce, expand it in any way you wish, provided you credit me and include a link to this mod.
