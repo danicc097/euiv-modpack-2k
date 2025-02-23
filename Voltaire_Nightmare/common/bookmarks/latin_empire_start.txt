@@ -1,0 +1,16 @@
+bookmark =
+{
+	name = "LATIN_EMPIRE_START"
+	desc = "LATIN_EMPIRE_START_DESC"
+	date = 1204.5.16
+	
+	country = VEN
+	country = LAE
+	country = TSS
+	country = ATH
+	country = NKA
+	country = EPI
+	country = ENG
+	country = CAS
+	country = TRE
+}

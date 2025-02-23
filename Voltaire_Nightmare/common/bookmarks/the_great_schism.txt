@@ -1,0 +1,25 @@
+bookmark =
+{
+	name = "THE_GREAT_SCHISM"
+	desc = "THE_GREAT_SCHISM_DESC"
+	date = 1054.7.16
+
+	center = 501
+	default = yes
+	
+	country = LON
+	country = NRM
+	country = APL
+	country = PAP
+	country = DIE
+	country = SDL
+	country = ASE
+	country = NOR
+	country = KIE
+	country = DAA
+	country = FTM
+	
+	easy_country = LON
+	easy_country = NRM
+	easy_country = APL
+}

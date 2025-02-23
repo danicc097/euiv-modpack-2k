@@ -1,0 +1,16 @@
+name = "Qara Qoyunlu Civil War"
+war_goal = {
+	type = take_capital_vassalize
+	casus_belli = cb_vassalize_mission
+	tag = JYA
+}
+
+1445.3.8 = {
+	add_attacker = QAR
+	add_defender = JYA
+}
+
+1446.6.9 = {
+	rem_attacker = QAR
+	rem_defender = JYA
+}

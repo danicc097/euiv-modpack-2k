@@ -1,0 +1,2059 @@
+age_of_empire = {
+	start = 1000
+	papacy = 1.00
+	
+	can_start = {
+		always = yes
+	}
+
+	objectives = {
+		obj_emperor_of_china = {
+			is_emperor_of_china = yes
+			imperial_mandate = 50
+		}
+		obj_large_army = {
+			num_of_infantry = 10
+		}
+		obj_papal_controller = {
+			allow = { religion = catholic }
+			is_papal_controller = yes
+		}
+		obj_defender = {
+			allow = { NOT = { religion = catholic } }
+			is_defender_of_faith = yes
+		}
+		obj_50_prestige = {
+			prestige = 35
+		}
+		obj_elector = {
+			allow = { is_part_of_hre = yes }
+			OR = {
+				is_elector = yes
+				any_ally = { is_emperor = yes }
+			}
+		}
+		obj_20_development_city = {
+			allow = { is_part_of_hre = no }
+			custom_trigger_tooltip = {
+				tooltip = obj_20_development_city_tooltip
+				any_owned_province = {
+					exclude_from_progress = {
+						is_core = ROOT
+						controlled_by = owner
+					}
+					development = 20
+				}
+			}
+		}
+		obj_competent_ruler = {
+			ADM = 3
+			DIP = 3
+			MIL = 3
+		}
+		obj_4_enemies = {
+			calc_true_if = {
+				all_country = { is_rival = ROOT }
+				amount = 4
+			}
+		}
+	}		
+	
+	abilities = {
+		ab_rapid_cores = {
+			effect = {
+				on_age_ability_taken = { age = age_of_empire }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				core_creation = -0.1
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_cheap_states = {
+			effect = {
+				on_age_ability_taken = { age = age_of_empire }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				state_maintenance_modifier = -0.15
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_integration_na = {
+			effect = {
+				on_age_ability_taken = { age = age_of_empire }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				years_of_nationalism = -5
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_neverending_war = {
+			effect = {
+				on_age_ability_taken = { age = age_of_empire }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				war_exhaustion = -0.02
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_thalassocratic = {
+			effect = {
+				on_age_ability_taken = { age = age_of_empire }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				naval_forcelimit_modifier = 0.25
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_siegers = {
+			effect = {
+				on_age_ability_taken = { age = age_of_empire }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				siege_ability = 0.1
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_super_vassals = {
+			effect = {
+				on_age_ability_taken = { age = age_of_empire }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				vassal_forcelimit_bonus = 1
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_rashkan_rise = {
+			effect = {
+				on_age_ability_taken = { age = age_of_empire }
+			}
+			allow = {
+				OR = {
+					tag = KSV
+					tag = SER
+				}
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				land_maintenance_modifier = -0.15
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_aragonese_claims = {
+			effect = {
+				on_age_ability_taken = { age = age_of_empire }
+			}
+			allow = {
+				tag = ARA
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				fabricate_claims_cost = -0.5
+				province_warscore_cost = -0.25
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_norman_jesus = {
+			effect = {
+				on_age_ability_taken = { age = age_of_empire }
+			}
+			allow = {
+				OR = {
+					tag = APL
+					tag = SIC
+				}
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				discipline = 0.1
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_seljuk_frenzy = {
+			effect = {
+				on_age_ability_taken = { age = age_of_empire }
+			}
+			allow = {
+				tag = SJK
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				army_tradition = 1
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+}
+
+age_of_holy_wars = {
+	start = 1100
+	papacy = 1.15
+	
+	can_start = {
+		any_country = { mil_tech = 4 }
+	}
+	
+	religious_conflicts = yes
+
+	objectives = {
+		obj_many_generals = {
+			allow = { ai = no }
+			num_of_generals = 4
+		}
+		obj_many_generals_ai = {
+			allow = { ai = yes }
+			num_of_generals = 6
+		}
+		obj_full_ideas = {
+			custom_trigger_tooltip = {
+				tooltip = obj_full_ideas_tooltip
+				OR = {
+					full_idea_group = logistics_ideas
+					full_idea_group = cultural_ideas
+					full_idea_group = manufacturing_ideas
+					full_idea_group = aristocracy_ideas
+					full_idea_group = plutocracy_ideas
+					full_idea_group = innovativeness_ideas
+					full_idea_group = religious_ideas
+					full_idea_group = spy_ideas
+					full_idea_group = diplomatic_ideas
+					full_idea_group = piracy_ideas
+					full_idea_group = offensive_ideas
+					full_idea_group = defensive_ideas
+					full_idea_group = trade_ideas
+					full_idea_group = administrative_ideas
+					full_idea_group = economic_ideas
+					full_idea_group = exploration_ideas
+					full_idea_group = maritime_ideas
+					full_idea_group = quality_ideas
+					full_idea_group = quantity_ideas
+					full_idea_group = expansion_ideas
+					full_idea_group = humanist_ideas
+					full_idea_group = naval_ideas
+					full_idea_group = influence_ideas
+					full_idea_group = indigenous_ideas
+					full_idea_group = horde_gov_ideas
+					full_idea_group = theocracy_gov_ideas
+					full_idea_group = infrastructure_ideas
+					full_idea_group = court_ideas
+					full_idea_group = mercenary_ideas
+				}
+			}
+		}
+		obj_investiture = {
+			has_institution = investiture
+			all_state_province = {
+				investiture = 100
+			}
+	   	}
+		obj_holy_war = {
+			custom_trigger_tooltip = {
+				tooltip = obj_holy_war_tooltip
+				has_country_flag = obj_holy_war_flag
+			}
+		}
+		obj_disc_early = {
+			has_global_modifier_value = {
+				which = discipline
+				value = 0.10
+				extra_shortcut = yes
+			}
+		}
+		obj_convert_6_provinces = {
+			custom_trigger_tooltip = {
+				tooltip = obj_convert_6_provinces_tooltip
+				check_variable = { which = num_converted_religion value = 6 }
+			}
+		}
+		obj_christian_convert_early = {
+			OR = {
+				religion = cathar
+				religion = paulician
+				religion = shiite
+			}
+		}
+	}		
+	
+	abilities = {
+		ab_warscore_vs_religion2 = {
+			effect = {
+				on_age_ability_taken = { age = age_of_holy_wars }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				warscore_cost_vs_other_religion = -0.25
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_unconquerable = {
+			effect = {
+				on_age_ability_taken = { age = age_of_holy_wars }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				enemy_core_creation = 0.25
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_crusade_tech = {
+			effect = {
+				on_age_ability_taken = { age = age_of_holy_wars }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				technology_cost = -0.05
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_crusader_forts = {
+			effect = {
+				on_age_ability_taken = { age = age_of_holy_wars }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				garrison_size = 0.25
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_mercenaries_galore = {
+			effect = {
+				on_age_ability_taken = { age = age_of_holy_wars }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				mercenary_cost = -0.15
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_cleansing_heretics = {
+			effect = {
+				on_age_ability_taken = { age = age_of_holy_wars }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				missionaries = 1
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_accept_faiths = {
+			effect = {
+				on_age_ability_taken = { age = age_of_holy_wars }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				religious_unity = 0.25
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_moroccan_cavalry = {
+			effect = {
+				on_age_ability_taken = { age = age_of_holy_wars }
+			}
+			allow = {
+				tag = MOR
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				cavalry_power = 0.25
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_swabian_connectedness = {
+			effect = {
+				on_age_ability_taken = { age = age_of_holy_wars }
+			}
+			allow = {
+				tag = SWA
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				diplomatic_upkeep = 2
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_georgian_revivalism = {
+			effect = {
+				on_age_ability_taken = { age = age_of_holy_wars }
+			}
+			allow = {
+				tag = GEO
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				development_cost = -0.2
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_hungry_hungary = {
+			effect = {
+				on_age_ability_taken = { age = age_of_holy_wars }
+			}
+			allow = {
+				tag = HUN
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				movement_speed = 0.25
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+
+	}
+}
+
+age_of_crisis = {
+	start = 1200
+	papacy = 1.30
+	
+	can_start = {
+		any_country = { mil_tech = 14 }
+	}
+	
+	religious_conflicts = yes
+
+	objectives = {
+		obj_chivalry = {
+	 		has_institution = guilds
+	 		all_state_province = {
+	 			guilds = 100
+	 		}
+		}
+		obj_25_mercantilism = {
+			mercantilism = 25
+		}
+		obj_3_powerful_estates = {
+			num_of_powerful_estates = 2
+		}
+		obj_high_naval_fl = {
+			naval_forcelimit = 20
+		}
+		obj_fortified = {
+			calc_true_if = {
+				all_owned_province = { fort_level = 1 }
+				amount = 5
+			}
+		}
+		obj_scientist = {
+			natural_scientist = 2
+		}
+		obj_tribal_warfare = {
+			custom_trigger_tooltip = {
+				tooltip = obj_tribal_warfare_tooltip
+				has_country_flag = obj_tribal_warfare_flag
+			}
+		}
+	}		
+	
+	abilities = {
+		ab_advice_needed = {
+			effect = {
+				on_age_ability_taken = { age = age_of_crisis }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				advisor_cost = -0.1
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_forced_conversion = {
+			effect = {
+				on_age_ability_taken = { age = age_of_crisis }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				culture_conversion_cost = -0.15
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_size_matters_not = {
+			effect = {
+				on_age_ability_taken = { age = age_of_crisis }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				production_efficiency = 0.1
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_strong_and_stable = {
+			effect = {
+				on_age_ability_taken = { age = age_of_crisis }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				stability_cost_modifier = -0.1
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_complete_siege = {
+			effect = {
+				on_age_ability_taken = { age = age_of_crisis }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				blockade_efficiency = 0.33
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_spy_around_here = {
+			effect = {
+				on_age_ability_taken = { age = age_of_crisis }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				spy_offence = 0.2
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_war_of_attrition = {
+			effect = {
+				on_age_ability_taken = { age = age_of_crisis }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				hostile_attrition = 1
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_byzantine_restoration = {
+			effect = {
+				on_age_ability_taken = { age = age_of_crisis }
+			}
+			allow = {
+				OR = {
+					tag = NKA
+					tag = BYZ
+				}
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				leader_siege = 2
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_genovan_trade = {
+			effect = {
+				on_age_ability_taken = { age = age_of_crisis }
+			}
+			allow = {
+				tag = GEN
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				trade_efficiency = 0.25
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_sicilian_prestige = {
+			effect = {
+				on_age_ability_taken = { age = age_of_crisis }
+			}
+			allow = {
+				tag = SIC
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				prestige = 1
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_vladimirian_governorship = {
+			effect = {
+				on_age_ability_taken = { age = age_of_crisis }
+			}
+			allow = {
+				tag = VDR
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				stability_cost_modifier = -0.25
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+}
+
+age_of_dynasticism = {
+	start = 1300
+	papacy = 1.45
+
+	can_start = {
+		is_institution_enabled = chivalry
+	}
+
+	religious_conflicts = yes
+
+	objectives = {
+		obj_two_unions = {
+			allow = {
+				religion_group = christian
+				government = monarchy
+			}
+			calc_true_if = {
+				all_subject_country = {
+					OR = {
+						is_subject_of_type = personal_union
+						is_subject_of_type = integrated_personal_union
+					}
+				}
+				amount = 2
+			}
+		}
+		obj_many_vassals = {
+			allow = {
+				OR = {
+					NOT = { religion_group = christian }
+					NOT = { government = monarchy }
+				}
+			}
+			vassal = 5
+		}
+		obj_publichealth = {
+	 		has_institution = publichealth
+	 		all_state_province = {
+	 			publichealth = 100
+	 		}
+		}
+		obj_throne_claim = {
+			custom_trigger_tooltip = {
+				tooltip = obj_throne_claim_tooltip
+				has_country_flag = obj_throne_claim_flag
+			}
+		}
+		obj_long_subject = {
+			custom_trigger_tooltip = {
+				tooltip = obj_long_subject_tooltip
+				any_subject_country = {
+					OR = {
+						years_in_union_under = {
+							who = ROOT
+							years = 50
+						}
+						years_in_vassalage_under = {
+							who = ROOT
+							years = 50
+						}
+					}
+				}
+			}
+		}
+		obj_5_dynastic = {
+			allow = {
+				NOT = { government = republic }
+				NOT = { government = theocracy }
+			}
+			calc_true_if = {
+				all_country = { dynasty = ROOT }
+				amount = 5
+			}
+		}
+		obj_5_states = {
+			allow = {
+				OR = {
+					government = republic
+					government = theocracy
+				}
+			}
+			num_of_states = 5
+		}
+		obj_dip_ruler = {
+			DIP = 5
+		}
+		obj_multicultural = {
+			calc_true_if = {
+				all_owned_province = {
+					NOT = { culture_group = ROOT }
+				}
+				amount = 10
+			}
+		}
+	}
+
+	abilities = {
+		ab_medici_loan = {
+			effect = {
+				on_age_ability_taken = { age = age_of_dynasticism }
+				add_years_of_income = 2
+			}
+			modifier = {
+				num_of_age_rewards = 1
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_annex_vassals = {
+			effect = {
+				on_age_ability_taken = { age = age_of_dynasticism }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				diplomatic_annexation_cost = -0.15
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_vassal_payment = {
+			effect = {
+				on_age_ability_taken = { age = age_of_dynasticism }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				vassal_income = 0.25
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_allow_open_minded = {
+			effect = {
+				on_age_ability_taken = { age = age_of_dynasticism }
+				custom_tooltip = open_minded_tooltip
+				set_country_flag = open_minded_flag
+			}
+			modifier = {
+				num_of_age_rewards = 1
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_prestigeous = {
+			effect = {
+				on_age_ability_taken = { age = age_of_dynasticism }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				prestige_decay = -0.01
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_developers_developers = {
+			effect = {
+				on_age_ability_taken = { age = age_of_dynasticism }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				development_cost = -0.1
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_sail_forth = {
+			effect = {
+				on_age_ability_taken = { age = age_of_dynasticism }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				global_sailors_modifier = 0.25
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_bohemian_rhapsody = {
+			effect = {
+				on_age_ability_taken = { age = age_of_dynasticism }
+			}
+			allow = {
+				tag = BOH
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				build_cost = -0.5
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_english_longbow = {
+			effect = {
+				on_age_ability_taken = { age = age_of_dynasticism }
+			}
+			allow = {
+				tag = ENG
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				land_morale = 0.20
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_muscovite_vanguard = {
+			effect = {
+				on_age_ability_taken = { age = age_of_dynasticism }
+			}
+			allow = {
+				tag = MOS
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				meritocracy = 2
+				legitimacy = 2
+				republican_tradition = 0.6
+				devotion = 2
+				horde_unity = 2
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_burgundy_the_bold = {
+			effect = {
+				on_age_ability_taken = { age = age_of_dynasticism }
+			}
+			allow = {
+				tag = BUR
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				diplomats = 2
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+}
+
+
+age_of_discovery = {
+	start = 1400
+	papacy = 1.60
+	
+	can_start = {
+		is_institution_enabled = laytheology
+	}
+	
+	religious_conflicts = yes
+	
+
+	objectives = {
+		obj_100_development = {
+			total_development = 150
+		}
+		obj_5_centers_of_trade = {
+			calc_true_if = {
+				all_owned_province = {
+					OR = {
+						province_has_center_of_trade_of_level = 2
+						province_has_center_of_trade_of_level = 3
+					}
+					controlled_by = owner
+					is_core = ROOT
+				}
+				amount = 5
+			}
+		}
+		obj_30_development_city = {
+			custom_trigger_tooltip = {
+				tooltip = obj_30_development_city_tooltip
+				any_owned_province = {
+					exclude_from_progress = {
+						is_core = ROOT
+						controlled_by = owner
+					}
+					development_discounting_tribal = 30
+				}
+			}
+		}
+		obj_renaissance = {
+	 		has_institution = renaissance
+	 		all_state_province = {
+	 			renaissance = 100
+	 		}
+		}		
+		obj_trade_leader = {
+			num_of_trading_bonuses = 2
+		}
+		obj_two_continents = {
+			num_of_continents = 2
+		}
+		obj_humiliate_rival = {
+			custom_trigger_tooltip = {
+				tooltip = obj_humiliate_rival_tooltip
+				has_country_flag = humiliated_rival
+			}
+		}
+	}		
+	
+	abilities = {
+		ab_allow_feudal_de_jure_law = {
+			effect = {
+				custom_tooltip = feudal_de_jure_law
+				set_country_flag = feudal_de_jure_law
+				on_age_ability_taken = { age = age_of_discovery }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		
+		ab_justified_wars = {
+			effect = { 
+				on_age_ability_taken = { age = age_of_discovery }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				ae_impact = -0.1
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		
+
+		ab_transfer_vassal_wargoal = {
+			effect = { 
+				on_age_ability_taken = { age = age_of_discovery }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				can_transfer_vassal_wargoal = yes
+				can_chain_claim = yes
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		
+		ab_free_war_taxes = {
+			effect = { 
+				on_age_ability_taken = { age = age_of_discovery }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				war_taxes_cost_modifier = -1.0
+			}
+			ai_will_do = {
+				factor = 10
+			}	
+		}
+		
+
+		ab_cavalry_armies = {
+			effect = { 
+				on_age_ability_taken = { age = age_of_discovery }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				cav_to_inf_ratio = 0.2
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_colony_boost_development = {
+			effect = { 
+				on_age_ability_taken = { age = age_of_discovery }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				colony_development_boost = 1
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		
+		ab_attack_bonus_in_capital_terrain = {
+			effect = { 
+				on_age_ability_taken = { age = age_of_discovery }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				attack_bonus_in_capital_terrain = 1
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		
+		ab_ottoman_siege_ability = {
+			effect = { 
+				on_age_ability_taken = { age = age_of_discovery }
+			}
+			allow = {
+				tag = TUR
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				leader_siege = 1 
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		
+		ab_portugal_colonial_growth = {
+			effect = { 
+				on_age_ability_taken = { age = age_of_discovery }
+			}
+			allow = {
+				tag = POR
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				global_tax_modifier = 0.5
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+
+		ab_denmark_reduced_lib_desire = {
+			effect = { 
+				on_age_ability_taken = { age = age_of_discovery }
+			}
+			allow = {
+				tag = DAN
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				reduced_liberty_desire = 30
+			}
+			ai_will_do = {
+				factor = 100
+				modifier = {		
+					factor = 0		
+					NOT = {		
+						any_subject_country = {		
+							liberty_desire = 20		
+						}		
+					}		
+				}
+			}
+		}
+		ab_venice_ship_trade = {
+			effect = { 
+				on_age_ability_taken = { age = age_of_discovery }
+			}
+			allow = {
+				tag = VEN
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				global_ship_trade_power = 0.5
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+}
+
+age_of_reformation = {
+	start = 1500
+	papacy = 1.75
+	
+	can_start = {
+		OR = {
+			AND = {
+				is_religion_enabled = protestant
+				is_year = 1490
+			}
+			is_year = 1520
+		}
+	}
+	
+	religious_conflicts = yes
+	
+	objectives = {
+		obj_christian_convert = {
+			OR = {
+				religion = protestant
+				religion = reformed
+				religion = anabaptist
+				religion = anglican
+			}
+		}		
+		obj_humanism_religious = {
+			OR = {
+				full_idea_group = humanist_ideas
+				full_idea_group = religious_ideas
+			}
+		}		
+		obj_convert_10_provinces = {
+			custom_trigger_tooltip = {
+				tooltip = obj_convert_10_provinces_tooltip
+				check_variable = { which = num_converted_religion value = 10 }
+			}
+		}		
+		obj_colonial_empire = {
+			calc_true_if = {
+				all_subject_country = {
+					OR = {
+						is_subject_of_type = colony
+						is_subject_of_type = crown_colony
+						is_subject_of_type = private_enterprise
+						is_subject_of_type = self_governing_colony
+						#is_subject_of_type = european_colony
+					}
+				}
+				amount = 2
+			}
+		}		
+		obj_force_converted = {
+			custom_trigger_tooltip = {
+				tooltip = obj_force_converted_tooltip
+				has_country_flag = force_converted
+			}
+		}	
+		obj_asian_trade = {
+			OR = {
+				trading_bonus = {
+					trade_goods = dyes
+					value = yes
+				}
+				trading_bonus = {
+					trade_goods = peaches
+					value = yes
+				}
+				trading_bonus = {
+					trade_goods = silk
+					value = yes
+				}
+			
+			}
+		}
+		obj_unify_culture = {
+			is_subject = no	
+			has_unified_culture_group = yes
+		}
+	}	
+	
+	
+	abilities = {
+	
+		ab_allow_religion_enforced = {
+			effect = {
+				on_age_ability_taken = { age = age_of_reformation }
+				custom_tooltip = religion_enforced_edict
+				set_country_flag = religion_enforced_edict
+			}
+			modifier = {
+				num_of_age_rewards = 1
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}	
+
+		ab_siege_blockades = {
+			effect = {
+				on_age_ability_taken = { age = age_of_reformation }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				siege_blockade_progress = 1
+			}
+			ai_will_do = {
+				factor = 10
+				modifier = {
+					factor = 0
+					NOT = {
+						num_of_ports = 5
+					}
+				}
+			}
+		}
+		
+		ab_warscore_vs_religion = {
+			effect = {
+				on_age_ability_taken = { age = age_of_reformation }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				warscore_cost_vs_other_religion = -0.25
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		
+		ab_mercenary_discipline = {
+			effect = {
+				on_age_ability_taken = { age = age_of_reformation }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				mercenary_discipline = 0.05
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_ship_power_propagation = {
+			effect = {
+				on_age_ability_taken = { age = age_of_reformation }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				ship_power_propagation = 0.2
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		
+		
+		ab_institution_spread_from_true_faith = {
+			effect = {
+				on_age_ability_taken = { age = age_of_reformation }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				institution_spread_from_true_faith = 0.5
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+
+		ab_prestige_per_development_from_conversion = {
+			effect = {
+				on_age_ability_taken = { age = age_of_reformation }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				prestige_per_development_from_conversion = 0.3
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+
+		ab_spain_shock_tactics = {
+			effect = {
+				on_age_ability_taken = { age = age_of_reformation }
+			}
+			allow = {
+				tag = SPA
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				leader_land_shock = 1
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+
+		ab_florentine_humanism = {
+			effect = {
+				on_age_ability_taken = { age = age_of_reformation }
+			}
+			allow = {
+				OR = {
+					tag = LAN
+					tag = TUS
+				}
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				idea_cost = -0.2
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		
+		ab_polish_legitimacy = {
+			effect = {
+				on_age_ability_taken = { age = age_of_reformation }
+			}
+			allow = {
+				OR = {
+					tag = PLC
+					tag = POL
+				}
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				global_trade_goods_size_modifier = 0.33
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+
+		ab_saxon_bears = {
+			effect = {
+				on_age_ability_taken = { age = age_of_reformation }
+			}
+			allow = {
+				tag = SAX
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				global_manpower_modifier = 0.33
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+}
+
+age_of_absolutism = {
+	start = 1600
+	papacy = 1.90
+	
+	can_start = {
+		is_institution_enabled = global_trade
+	}
+		
+	absolutism = {
+		harsh_treatment = 1
+		stability = 1
+		decrease_autonomy_command = 1
+		strengthen_government = 2
+		
+		increase_autonomy_command = -2
+		debase_currency = -1
+		execute_rebel_acceptance_command = -10
+		automatic_seat_in_parliament = -2
+		manual_seat_in_parliament = -2
+		war_exhaustion = -1
+	}
+	
+	
+	objectives = {
+		obj_universities = {
+			num_of_owned_provinces_with = {
+				has_building = university 
+				value = 5 
+			}
+		}	
+		obj_large_forcelimit = {
+			land_forcelimit = 200
+		}		
+		obj_90_absolutism = {
+			absolutism = 90
+		}		
+		obj_cultures_accepted = {
+			num_accepted_cultures = 5
+		}		
+		obj_win_religious_war = {
+			custom_trigger_tooltip = {
+				tooltip = obj_religious_league_war_on_winning_side_tooltip
+				has_country_flag = religious_league_war_on_winning_side
+			}			
+		}
+		obj_centralized = {
+			average_home_autonomy = 0
+			num_of_cities = 50
+		}
+		obj_large_treasury = {
+			treasury = 1500
+		}
+	}	
+	
+	abilities = {
+	
+		ab_allow_edict_of_absolutism = {
+			effect = {
+				on_age_ability_taken = { age = age_of_absolutism }
+				custom_tooltip = edict_of_absolutism_tt
+				set_country_flag = edict_of_absolutism
+			}
+			modifier = {
+				num_of_age_rewards = 1
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+
+		ab_rival_change = {
+			effect = {
+				on_age_ability_taken = { age = age_of_absolutism }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				rival_change_cost = -0.5
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		ab_rival_border_fort = {
+			effect = {
+				on_age_ability_taken = { age = age_of_absolutism }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				rival_border_fort_maintenance = -1.0
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+
+
+		ab_autonomy = {
+			effect = {
+				on_age_ability_taken = { age = age_of_absolutism }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				autonomy_change_time = -0.5
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+
+
+		ab_harsh_treatment = {
+			effect = {
+				on_age_ability_taken = { age = age_of_absolutism }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				harsh_treatment_cost = -0.5
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+
+	
+		ab_adm_efficiency = {
+			effect = {
+				on_age_ability_taken = { age = age_of_absolutism }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				administrative_efficiency = 0.05
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+
+		ab_yearly_absolutism = {
+			effect = {
+				on_age_ability_taken = { age = age_of_absolutism }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				yearly_absolutism = 1
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	
+	
+		ab_french_absolutism = {
+			effect = {
+				on_age_ability_taken = { age = age_of_absolutism }
+			}
+			allow = {
+				tag = FRA
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				max_absolutism_effect = 0.3
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_dutch_trade = {
+			effect = {
+				on_age_ability_taken = { age = age_of_absolutism }
+			}
+			allow = {
+				tag = NED
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				trade_steering = 0.33
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_sweden_manpower = {
+			effect = {
+				on_age_ability_taken = { age = age_of_absolutism }
+			}
+			allow = {
+				OR = {
+					tag = SWE
+					tag = SCA
+				}
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				manpower_recovery_speed = 0.35
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_northern_march = {
+			effect = {
+				on_age_ability_taken = { age = age_of_absolutism }
+			}
+			allow = {
+				tag = BRA
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				free_leader_pool = 2
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+}
+
+age_of_revolutions = {
+	start = 1700
+	papacy = 2.05
+	
+	can_start = {
+		is_institution_enabled = enlightenment
+	}
+	
+	absolutism = {
+		harsh_treatment = 1
+		stability = 1
+		decrease_autonomy_command = 1
+		strengthen_government = 2
+		
+		increase_autonomy_command = -2
+		debase_currency = -1
+		execute_rebel_acceptance_command = -10
+		automatic_seat_in_parliament = -2
+		manual_seat_in_parliament = -2
+		war_exhaustion = -1
+	}
+		
+	objectives = {
+		obj_parliament = {
+			has_parliament = yes
+		}
+		obj_emperor = {
+			OR = {	
+				is_emperor = yes
+				government_rank = 6
+				is_emperor_of_china = yes
+			}
+		}
+		obj_large_subject = {
+			any_subject_country = {
+				total_development = 250
+			}
+		}
+		obj_disc_army = {
+			has_global_modifier_value = {
+				which = discipline
+				value = 0.25
+				extra_shortcut = yes
+			}
+		}	
+		obj_huge_capital = {
+			capital_scope = {
+				development = 50
+			}
+		}
+		obj_great_general = {
+			has_commanding_three_star = yes
+		}
+		obj_revolutionary = {
+			custom_trigger_tooltip = {
+				tooltip = obj_revolutionary_tooltip
+				OR = {
+					is_revolution_target = yes
+					has_country_flag = obj_revolutionary_flag
+				}
+			}
+		}
+	}
+
+	abilities = {
+
+		ab_allow_anti_revolutionary_zeal = {
+			effect = {
+				on_age_ability_taken = { age = age_of_revolutions }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				liberty_desire_from_subject_development = -0.33
+			}
+			ai_will_do = {
+				factor = 15
+				modifier = {
+					factor = 0
+					NOT = {
+						any_subject_country = {
+							liberty_desire = 30
+						}
+					}
+				}
+			}
+		}
+		ab_napoleonic_warfare = {
+			effect = {
+				on_age_ability_taken = { age = age_of_revolutions }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				artillery_levels_available_vs_fort = 3
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_force_march = {
+			effect = {
+				on_age_ability_taken = { age = age_of_revolutions }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				force_march_free = yes
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_more_ships_can_fire = {
+			effect = {
+				on_age_ability_taken = { age = age_of_revolutions }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				global_naval_engagement_modifier = 0.20
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_no_distance_for_core = {
+			effect = {
+				on_age_ability_taken = { age = age_of_revolutions }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				ignore_coring_distance = yes
+			}
+			ai_will_do = {
+				factor = 15
+				modifier = {
+					# AI peace code relies on being limited by coring range, or it will create crazy border gore where it can't reach its new lands
+					factor = 0
+					OR = {
+						is_subject = no
+						overlord = {
+							ai = yes
+						}
+					}
+				}
+			}
+		}
+		ab_backrow_artillery = {
+			effect = {
+				on_age_ability_taken = { age = age_of_revolutions }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				backrow_artillery_damage = 0.20
+			}
+			ai_will_do = {
+				factor = 15
+			}
+		}
+		ab_same_contine_lib_desire = {
+			effect = {
+				on_age_ability_taken = { age = age_of_revolutions }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				reduced_liberty_desire_on_same_continent = 25
+			}
+			ai_will_do = {
+				factor = 15
+				modifier = {
+					factor = 0
+					NOT = {
+						any_subject_country = {
+							liberty_desire = 30
+							same_continent = ROOT
+						}
+					}
+				}
+			}
+		}
+		ab_pru_military = {
+			effect = {
+				on_age_ability_taken = { age = age_of_revolutions }
+			}
+			allow = {
+				OR = {
+					tag = PRU
+					tag = NGC
+					tag = SGC
+					tag = GER
+				}
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				fire_damage_received = -0.2
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_gbr_fleet = {
+			effect = {
+				on_age_ability_taken = { age = age_of_revolutions }
+			}
+			allow = {
+				OR = {
+					tag = AVE
+					tag = GBR
+				}
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				max_admiral_fire = 1
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_russia_boost = {
+			effect = {
+				on_age_ability_taken = { age = age_of_revolutions }
+			}
+			allow = {
+				tag = RUS
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				min_autonomy_in_territories = -0.1
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_austrian_morale = {
+			effect = {
+				on_age_ability_taken = { age = age_of_revolutions }
+			}
+			allow = {
+				OR = {
+					tag = HAB
+					tag = HLR
+					tag = EAH
+				}
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				morale_damage_received = -0.2
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+}
+
+age_of_ideology = {
+	start = 1800
+	papacy = 2.20
+
+	can_start = {
+		OR = {
+			AND = {
+				has_first_revolution_started = yes
+				is_year = 1800
+			}
+			is_year = 1810
+		}
+	}
+
+	absolutism = {
+		harsh_treatment = 1
+		stability = 1
+		decrease_autonomy_command = 1
+		strengthen_government = 2
+		
+		increase_autonomy_command = -2
+		debase_currency = -1
+		execute_rebel_acceptance_command = -10
+		automatic_seat_in_parliament = -2
+		manual_seat_in_parliament = -2
+		war_exhaustion = -1
+	}
+
+	objectives = {
+		obj_force_converted_govt = {
+			custom_trigger_tooltip = {
+				tooltip = obj_force_converted_govt_tooltip
+				has_country_flag = obj_force_converted_govt_flag
+			}
+		}
+		obj_two_institutions = {
+			num_of_owned_and_controlled_institutions = 2
+		}
+		obj_diplo_rel = {
+			num_of_diplomatic_relations = 8
+		}
+		obj_coalition = {
+			custom_trigger_tooltip = {
+				tooltip = obj_coalition_tooltip
+				is_in_coalition = yes
+				num_of_coalition_members = 5
+			}
+		}
+		obj_cultural_homogeniety = {
+			dominant_culture = ROOT
+		}
+		obj_great_power = {
+			is_great_power = yes
+			stability = 3
+		}
+		obj_gold_standard = {
+			gold_income = 6
+		}
+	}
+
+	abilities = {
+		ab_age_liberalism = {
+			effect = {
+				on_age_ability_taken = { age = age_of_ideology }
+				custom_tooltip = age_liberalism_tooltip
+				set_country_flag = age_liberalism_flag
+			}
+			modifier = {
+				num_of_age_rewards = 1
+			}
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		ab_naval_pride = {
+			effect = {
+				on_age_ability_taken = { age = age_of_ideology }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				sunk_ship_morale_hit_recieved = -0.2
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_smithian_economics = {
+			effect = {
+				on_age_ability_taken = { age = age_of_ideology }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				inflation_reduction = 0.1
+			}
+			ai_will_do = {
+				factor = 15
+			}			
+		}
+		ab_pax_ab_chao = {
+			effect = {
+				on_age_ability_taken = { age = age_of_ideology }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				global_unrest = -1
+			}
+			ai_will_do = {
+				factor = 15
+			}			
+		}
+		ab_accepting_heretics = {
+			effect = {
+				on_age_ability_taken = { age = age_of_ideology }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				tolerance_heretic = 2
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_accepting_cultures = {
+			effect = {
+				on_age_ability_taken = { age = age_of_ideology }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				num_accepted_cultures = 1
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_globalist_shills = {
+			effect = {
+				on_age_ability_taken = { age = age_of_ideology }
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				global_foreign_trade_power = 0.1
+			}
+			ai_will_do = {
+				factor = 10
+			}			
+		}
+		ab_egyptian_modernization = {
+			effect = {
+				on_age_ability_taken = { age = age_of_ideology }
+			}
+			allow = {
+				tag = EGY
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				technology_cost = -0.1
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_risorgimento = {
+			effect = {
+				on_age_ability_taken = { age = age_of_ideology }
+			}
+			allow = {
+				OR = {
+					tag = SPI
+					tag = ITA
+				}
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				years_of_nationalism = -10
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_bavarian_talent = {
+			effect = {
+				on_age_ability_taken = { age = age_of_ideology }
+			}
+			allow = {
+				tag = BAV
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				advisor_pool = 2
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		ab_greek_independence = {
+			effect = {
+				on_age_ability_taken = { age = age_of_ideology }
+			}
+			allow = {
+				tag = GRE
+			}
+			modifier = {
+				num_of_age_rewards = 1
+				defensiveness = 0.40
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+}

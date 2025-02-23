@@ -1,0 +1,73 @@
+government = monarchy
+add_government_reform = autocracy_reform
+government_rank = 1
+technology_group = western
+primary_culture = boden_alemannic
+religion = catholic
+capital = 2751
+
+1054.1.1 = {
+	monarch = {
+		name = "Friedrich I"
+		dynasty = "von Sulz"
+		dip = 2
+		mil = 2
+		adm = 2
+	}
+}
+1084.1.1 = {
+	monarch = {
+		name = "Friedrich II"
+		dynasty = "von Sulz"
+		adm = 3
+		dip = 2
+		mil = 3
+	}
+}
+1121.1.1 = {
+	monarch = {
+		name = "Arnold I"
+		dynasty = "von Sulz"
+		adm = 2
+		dip = 1
+		mil = 2
+	}
+}
+1139.1.1 = {
+	monarch = {
+		name = "Friedrich III"
+		dynasty = "von Sulz"
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1156.1.1 = {
+	monarch = {
+		name = "Konrad I"
+		dynasty = "von Sulz"
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1204.1.1 = {
+	monarch = {
+		name = "Friedrich IV"
+		dynasty = "von Sulz"
+		birth_date = 1191.1.1
+		dip = 1
+		mil = 2
+		adm = 2
+	}
+}
+1249.1.1 = {
+	monarch = {
+		name = "Udilhild"
+		dynasty = "von Sulz"
+		female = yes
+		dip = 2
+		mil = 2
+		adm = 2
+	}
+}

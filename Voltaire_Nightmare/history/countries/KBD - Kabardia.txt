@@ -1,0 +1,241 @@
+government = tribal
+add_government_reform = tribal_federation
+government_rank = 3
+primary_culture = circassian
+religion = khabze
+technology_group = north_american
+capital = 3755
+
+1453.1.1 = {
+	monarch = {
+		name = "Tobuldu"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 3
+		mil = 3
+	}
+}
+1490.1.1 = {
+	monarch = {
+		name = "Inarmas"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 1
+		mil = 2
+	}
+}
+1530.1.1 = {
+	monarch = {
+		name = "Idar"
+		dynasty = "Karmoko"
+		adm = 3
+		dip = 6
+		mil = 2
+	}
+}
+1558.1.1 = {
+	monarch = {
+		name = "Temyruk"
+		dynasty = "Karmoko"
+		adm = 3
+		dip = 5
+		mil = 3
+	}
+}
+1571.1.1 = {
+	monarch = {
+		name = "Shiapshuk"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 3
+		mil = 2
+	}
+}
+1578.1.1 = {
+	monarch = {
+		name = "Kambulat"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1589.1.1 = {
+	monarch = {
+		name = "Kaytuk"
+		dynasty = "Karmoko"
+		adm = 1
+		dip = 1
+		mil = 2
+	}
+}
+1609.1.1 = {
+	monarch = {
+		name = "Sholokh"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1616.1.1 = {
+	monarch = {
+		name = "Kudenet"
+		dynasty = "Karmoko"
+		adm = 1
+		dip = 2
+		mil = 1
+	}
+}
+1624.1.1 = {
+	monarch = {
+		name = "Dzankot"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1654.1.1 = {
+	monarch = {
+		name = "Atajuq"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1672.1.1 = {
+	monarch = {
+		name = "Misost"
+		dynasty = "Karmoko"
+		adm = 1
+		dip = 2
+		mil = 1
+	}
+}
+1695.1.1 = {
+	monarch = {
+		name = "Atajuq"
+		dynasty = "Karmoko"
+		adm = 3
+		dip = 3
+		mil = 6
+	}
+}
+1710.1.1 = {
+	monarch = {
+		name = "Atajuq"
+		dynasty = "Karmoko"
+		adm = 3
+		dip = 3
+		mil = 2
+	}
+}
+1721.1.1 = {
+	monarch = {
+		name = "Islambek"
+		dynasty = "Karmoko"
+		adm = 4
+		dip = 4
+		mil = 4
+	}
+}
+1732.1.1 = {
+	monarch = {
+		name = "Tatarkhan"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1737.1.1 = {
+	monarch = {
+		name = "Qeytuqo"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1746.1.1 = {
+	monarch = {
+		name = "Batoko"
+		dynasty = "Karmoko"
+		religion = sunni
+		adm = 3
+		dip = 1
+		mil = 2
+	}
+}
+1749.1.1 = {
+	monarch = {
+		name = "Bamat Muhammad"
+		dynasty = "Karmoko"
+		religion = sunni
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1757.1.1 = {
+	religion = sunni
+	religious_school = hanafi_school
+	technology_group = eastern
+}
+1762.1.1 = {
+	monarch = {
+		name = "Qasey Atajuq"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1773.1.1 = {
+	monarch = {
+		name = "Jankhot"
+		dynasty = "Karmoko"
+		adm = 1
+		dip = 2
+		mil = 1
+	}
+}
+1785.1.1 = {
+	monarch = {
+		name = "Misost"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1788.1.1 = {
+	monarch = {
+		name = "Atajuq"
+		dynasty = "Karmoko"
+		adm = 1
+		dip = 2
+		mil = 2
+	}
+}
+1809.1.1 = {
+	monarch = {
+		name = "Atajuq"
+		dynasty = "Karmoko"
+		adm = 0
+		dip = 0
+		mil = 0
+	}
+}
+1810.1.1 = {
+	monarch = {
+		name = "Jankhot Qushuq"
+		dynasty = "Karmoko"
+		adm = 1
+		dip = 0
+		mil = 0
+	}
+}
+#destroyed 1825.1.1

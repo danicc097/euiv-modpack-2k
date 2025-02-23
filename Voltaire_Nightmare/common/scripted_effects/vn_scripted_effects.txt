@@ -1,0 +1,4662 @@
+highest_monarch_skill_effect = {
+	if = {
+		limit = {
+			OR = {
+				ADM = 3
+				DIP = 3
+				MIL = 3
+			}
+		}
+		export_to_variable = {
+			variable_name = rulerAdmVar
+			value = trigger_value:ADM
+		}
+		export_to_variable = {
+			variable_name = rulerDipVar
+			value = trigger_value:DIP
+		}
+		export_to_variable = {
+			variable_name = rulerMilVar
+			value = trigger_value:MIL
+		}
+		random_list = {
+			33 = {
+				trigger = {
+					check_variable = {
+						which = rulerAdmVar
+						which = rulerDipVar
+					}
+					check_variable = {
+						which = rulerAdmVar
+						which = rulerMilVar
+					}
+				}
+				set_ruler_flag = adm_highest
+			}
+			33 = {
+				trigger = {
+					check_variable = {
+						which = rulerDipVar
+						which = rulerAdmVar
+					}
+					check_variable = {
+						which = rulerDipVar
+						which = rulerMilVar
+					}
+				}
+				set_ruler_flag = dip_highest
+			}
+			33 = {
+				trigger = {
+					check_variable = {
+						which = rulerMilVar
+						which = rulerAdmVar
+					}
+					check_variable = {
+						which = rulerMilVar
+						which = rulerDipVar
+					}
+				}
+				set_ruler_flag = mil_highest
+			}
+		}
+	}
+}
+
+black_death_big_effect = {
+	custom_tooltip = black_death_big_effect.tt
+	hidden_effect = {
+		reduce_province_development_through_plague_big_effect = { type = tax }
+		reduce_province_development_through_plague_big_effect = { type = production }
+		reduce_province_development_through_plague_big_effect = { type = manpower }
+	}	
+}
+
+black_death_small_effect = {
+	custom_tooltip = black_death_small_effect.tt
+	hidden_effect = {
+		reduce_province_development_through_plague_small_effect = { type = tax }
+		reduce_province_development_through_plague_small_effect = { type = production }
+		reduce_province_development_through_plague_small_effect = { type = manpower }
+	}	
+}
+
+reduce_province_development_through_plague_big_effect = {
+	if = {
+		limit = {
+			base_$type$ = 20
+		}
+		add_base_$type$ = -10
+	}
+	else_if = {
+		limit = {
+			base_$type$ = 18
+		}
+		add_base_$type$ = -9
+	}
+	else_if = {
+		limit = {
+			base_$type$ = 16
+		}
+		add_base_$type$ = -8
+	}
+	else_if = {
+		limit = {
+			base_$type$ = 14
+		}
+		add_base_$type$ = -7
+	}
+	else_if = {
+		limit = {
+			base_$type$ = 12
+		}
+		add_base_$type$ = -6
+	}
+	else_if = {
+		limit = {
+			base_$type$ = 10
+		}
+		add_base_$type$ = -5
+	}
+	else_if = {
+		limit = {
+			base_$type$ = 8
+		}
+		add_base_$type$ = -4
+	}
+	else_if = {
+		limit = {
+			base_$type$ = 6
+		}
+		add_base_$type$ = -3
+	}
+	else_if = {
+		limit = {
+			base_$type$ = 4
+		}
+		add_base_$type$ = -2
+	}
+	else_if = {
+		limit = {
+			base_$type$ = 2
+		}
+		add_base_$type$ = -1
+	}
+}
+
+reduce_province_development_through_plague_small_effect = {
+	if = {
+		limit = {
+			base_$type$ = 18
+		}
+		add_base_$type$ = -5
+	}
+	else_if = {
+		limit = {
+			base_$type$ = 14
+		}
+		add_base_$type$ = -4
+	}
+	else_if = {
+		limit = {
+			base_$type$ = 10
+		}
+		add_base_$type$ = -3
+	}
+	else_if = {
+		limit = {
+			base_$type$ = 6
+		}
+		add_base_$type$ = -2
+	}
+	else_if = {
+		limit = {
+			base_$type$ = 2
+		}
+		add_base_$type$ = -1
+	}
+}
+
+#Holy Oders
+add_estate_holy_orders_loyalty_effect = {
+	if = {
+		limit = {
+			has_estate = estate_holy_orders
+		}
+		add_estate_loyalty = {
+			estate = estate_holy_orders
+			loyalty = 10
+		}
+	}
+}
+
+reduce_estate_holy_orders_loyalty_effect = {
+	if = {
+		limit = {
+			has_estate = estate_holy_orders
+		}
+		add_estate_loyalty = {
+			estate = estate_holy_orders
+			loyalty = -10
+		}
+	}
+}
+
+#Mamluks
+add_estate_mamluks_loyalty_effect = {
+	if = {
+		limit = {
+			has_estate = estate_mamluks
+		}
+		add_estate_loyalty = {
+			estate = estate_mamluks
+			loyalty = 10
+		}
+	}
+}
+
+reduce_estate_mamluks_loyalty_effect = {
+	if = {
+		limit = {
+			has_estate = estate_mamluks
+		}
+		add_estate_loyalty = {
+			estate = estate_mamluks
+			loyalty = -10
+		}
+	}
+}
+
+#Inversely scales reform desire with # of catholic tags.
+add_reform_desire_effect = {
+	if = {
+		limit = {
+			is_institution_enabled = laytheology
+		}
+		hidden_effect = {
+			REB = {
+				ROOT = {
+					change_variable = {
+						which = num_of_tags_catholic
+						which = PREV
+					}
+				}
+			}
+			set_variable = {
+				which = reform_desire_gain
+				value = $base_reform_desire$
+			}
+			multiply_variable = {
+				which = reform_desire_gain
+				value = 100
+			}
+			if = {
+				limit = {
+					check_variable = {
+						which = num_of_tags_catholic
+						value = 100
+					}
+				}
+				divide_variable = {
+					which = reform_desire_gain
+					which = num_of_tags_catholic
+				}
+			}
+			else = {
+				divide_variable = {
+					which = reform_desire_gain
+					value = 100
+				}
+			}
+			if = {
+				limit = {
+					is_institution_enabled = laytheology
+				}
+				divide_variable = {
+					which = reform_desire_gain
+					value = 2
+				}
+			}
+			while = {
+				limit = {
+					check_variable = {
+						which = reform_desire_gain
+						value = 0.01
+					}
+				}
+				add_reform_desire = 0.01
+				subtract_variable = {
+					which = reform_desire_gain
+					value = 0.01
+				}
+			}
+			while = {
+				limit = {
+					check_variable = {
+						which = reform_desire_gain
+						value = 0.001
+					}
+				}
+				add_reform_desire = 0.001
+				subtract_variable = {
+					which = reform_desire_gain
+					value = 0.001
+				}
+			}
+			set_variable = {
+				which = reform_desire_gain
+				value = 0
+			}
+			set_variable = {
+				which = num_of_tags_catholic
+				value = 0
+			}
+		}
+	}
+}
+
+#Inversely scales reform desire with # of catholic tags.
+remove_reform_desire_effect = {
+	if = {
+		limit = {
+			is_institution_enabled = laytheology
+		}
+		hidden_effect = {
+			REB = {
+				ROOT = {
+					change_variable = {
+						which = num_of_tags_catholic
+						which = PREV
+					}
+				}
+			}
+			set_variable = {
+				which = reform_desire_gain
+				value = $base_reform_desire$
+			}
+			multiply_variable = {
+				which = reform_desire_gain
+				value = 100
+			}
+			if = {
+				limit = {
+					check_variable = {
+						which = num_of_tags_catholic
+						value = 100
+					}
+				}
+				divide_variable = {
+					which = reform_desire_gain
+					which = num_of_tags_catholic
+				}
+			}
+			else = {
+				divide_variable = {
+					which = reform_desire_gain
+					value = 100
+				}
+			}
+			if = {
+				limit = {
+					is_institution_enabled = laytheology
+				}
+				divide_variable = {
+					which = reform_desire_gain
+					value = 2
+				}
+			}
+			while = {
+				limit = {
+					NOT = {
+						check_variable = {
+							which = reform_desire_gain
+							value = -0.01
+						}
+					}
+				}
+				add_reform_desire = -0.01
+				change_variable = {
+					which = reform_desire_gain
+					value = 0.01
+				}
+			}
+			while = {
+				limit = {
+					NOT = {
+						check_variable = {
+							which = reform_desire_gain
+							value = -0.001
+						}
+					}
+				}
+				add_reform_desire = -0.001
+				change_variable = {
+					which = reform_desire_gain
+					value = 0.001
+				}
+			}
+			set_variable = {
+				which = reform_desire_gain
+				value = 0
+			}
+			set_variable = {
+				which = num_of_tags_catholic
+				value = 0
+			}
+		}
+	}
+}
+
+#Number of Catholic tags
+calc_catholic_tags = {
+	REB = {
+		set_variable = {
+			which = num_of_tags_catholic
+			value = 0
+		}
+		every_country = {
+			limit = {
+				religion = catholic
+			}
+			REB = {
+				change_variable = {
+					which = num_of_tags_catholic
+					value = 1
+				}
+			}
+		}
+	}
+}
+
+#Should only be called by on_startup
+init_centre_of_reformation = {
+	if = {
+		limit = {
+			NOT = {
+				is_year = 1600
+			}
+		}
+		if = {
+			limit = {
+				4061 = {
+					religion = cathar
+				}
+			}
+			4061 = {
+				add_reform_center = cathar
+			}
+		}
+		if = {
+			limit = {
+				2433 = {
+					religion = bogomilist
+				}
+				is_year = 1248
+				NOT = {
+					is_year = 1305
+				}
+			}
+			2433 = {
+				add_reform_center = bogomilist
+			}
+		}
+		if = {
+			limit = {
+				1837 = {
+					religion = fraticelli
+				}
+			}
+			1837 = {
+				add_reform_center = fraticelli
+			}
+		}
+		if = {
+			limit = {
+				2272 = {
+					religion = lollardy
+				}
+			}
+			2272 = {
+				add_reform_center = lollardy
+			}
+		}
+		if = {
+			limit = {
+				541 = {
+					religion = waldensian
+				}
+			}
+			541 = {
+				add_reform_center = waldensian
+			}
+		}
+		if = {
+			limit = {
+				781 = {
+					religion = hussite
+				}
+				NOT = {
+					is_year = 1471
+				}
+			}
+			781 = {
+				add_reform_center = hussite
+			}
+		}
+		if = {
+			limit = {
+				781 = {
+					religion = protestant
+				}
+			}
+			781 = {
+				add_reform_center = protestant
+			}
+		}
+		if = {
+			limit = {
+				59 = {
+					religion = protestant
+				}
+			}
+			59 = {
+				add_reform_center = protestant
+			}
+		}
+		if = {
+			limit = {
+				656 = {
+					religion = protestant
+				}
+			}
+			656 = {
+				add_reform_center = protestant
+			}
+		}
+		if = {
+			limit = {
+				2458 = {
+					religion = protestant
+				}
+			}
+			2458 = {
+				add_reform_center = protestant
+			}
+		}
+		if = {
+			limit = {
+				81 = {
+					religion = protestant
+				}
+			}
+			81 = {
+				add_reform_center = protestant
+			}
+		}
+		if = {
+			limit = {
+				2230 = {
+					religion = protestant
+				}
+			}
+			2230 = {
+				add_reform_center = protestant
+			}
+		}
+		if = {
+			limit = {
+				2467 = {
+					religion = reformed
+				}
+			}
+			2467 = {
+				add_reform_center = reformed
+			}
+		}
+		if = {
+			limit = {
+				2621 = {
+					religion = reformed
+				}
+			}
+			2621 = {
+				add_reform_center = reformed
+			}
+		}
+		if = {
+			limit = {
+				328 = {
+					religion = reformed
+				}
+			}
+			328 = {
+				add_reform_center = reformed
+			}
+		}
+		if = {
+			limit = {
+				1123 = {
+					religion = reformed
+				}
+			}
+			1123 = {
+				add_reform_center = reformed
+			}
+		}
+		if = {
+			limit = {
+				2359 = {
+					religion = reformed
+				}
+			}
+			2359 = {
+				add_reform_center = reformed
+			}
+		}
+	}
+}
+
+fragment_silesia_effect = {
+	#OSW
+	2945 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OSW
+				}
+			}
+			add_core = OSW
+		}
+	}
+	4914 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OSW
+				}
+			}
+			add_core = OSW
+		}
+	}
+	4913 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OSW
+				}
+			}
+			add_core = OSW
+		}
+	}
+	#CIE
+	301 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = CIE
+				}
+			}
+			add_core = CIE
+		}
+	}
+	2908 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = CIE
+				}
+			}
+			add_core = CIE
+		}
+	}
+	4912 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = CIE
+				}
+			}
+			add_core = CIE
+		}
+	}
+	4911 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = CIE
+				}
+			}
+			add_core = CIE
+		}
+	}
+	#RCB
+	815 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = RCB
+				}
+			}
+			add_core = RCB
+		}
+	}
+	2823 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = RCB
+				}
+			}
+			add_core = RCB
+		}
+	}
+	#BYT
+	2825 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = BYT
+				}
+			}
+			add_core = BYT
+		}
+	}
+	4915 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = BYT
+				}
+			}
+			add_core = BYT
+		}
+	}
+	#OPO
+	4919 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OPO
+				}
+			}
+			add_core = OPO
+		}
+	}
+	2660 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OPO
+				}
+			}
+			add_core = OPO
+		}
+	}
+	2943 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OPO
+				}
+			}
+			add_core = OPO
+		}
+	}
+	2815 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OPO
+				}
+			}
+			add_core = OPO
+		}
+	}
+	2663 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OPO
+				}
+			}
+			add_core = OPO
+		}
+	}
+	4918 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OPO
+				}
+			}
+			add_core = OPO
+		}
+	}
+	4919 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OPO
+				}
+			}
+			add_core = OPO
+		}
+	}
+	#NMY
+	2826 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = NMY
+				}
+			}
+			add_core = NMY
+		}
+	}
+	812 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = NMY
+				}
+			}
+			add_core = NMY
+		}
+	}
+	#OLS
+	2822 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OLS
+				}
+			}
+			add_core = OLS
+		}
+	}
+	816 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OLS
+				}
+			}
+			add_core = OLS
+		}
+	}
+	4908 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OLS
+				}
+			}
+			add_core = OLS
+		}
+	}
+	4905 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OLS
+				}
+			}
+			add_core = OLS
+		}
+	}
+	2821 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = OLS
+				}
+			}
+			add_core = OLS
+		}
+	}
+	#XBZ
+	817 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = XBZ
+				}
+			}
+			add_core = XBZ
+		}
+	}
+	4901 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = XBZ
+				}
+			}
+			add_core = XBZ
+		}
+	}
+	4902 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = XBZ
+				}
+			}
+			add_core = XBZ
+		}
+	}
+	#NYS
+	819 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = NYS
+				}
+			}
+			add_core = NYS
+		}
+	}
+	2414 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = NYS
+				}
+			}
+			add_core = NYS
+		}
+	}
+	#TRO
+	820 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = TRO
+				}
+			}
+			add_core = TRO
+		}
+	}
+	2904 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = TRO
+				}
+			}
+			add_core = TRO
+		}
+	}
+	2905 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = TRO
+				}
+			}
+			add_core = TRO
+		}
+	}
+	5927 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = TRO
+				}
+			}
+			add_core = TRO
+		}
+	}
+	288 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = TRO
+				}
+			}
+			add_core = TRO
+		}
+	}
+	#ZIE
+	818 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = ZIE
+				}
+			}
+			add_core = ZIE
+		}
+	}
+	#SNC
+	2814 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = SNC
+				}
+			}
+			add_core = SNC
+		}
+	}
+	4903 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = SNC
+				}
+			}
+			add_core = SNC
+		}
+	}
+	4904 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = SNC
+				}
+			}
+			add_core = SNC
+		}
+	}
+	#JWR
+	2817 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = JWR
+				}
+			}
+			add_core = JWR
+		}
+	}
+	4909 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = JWR
+				}
+			}
+			add_core = JWR
+		}
+	}
+	4906 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = JWR
+				}
+			}
+			add_core = JWR
+		}
+	}
+	#ZAG
+	827 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = ZAG
+				}
+			}
+			add_core = ZAG
+		}
+	}
+	#LNN
+	4907 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = LNN
+				}
+			}
+			add_core = LNN
+		}
+	}
+	826 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = LNN
+				}
+			}
+			add_core = LNN
+		}
+	}
+	#SCW
+	813 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = SCW
+				}
+			}
+			add_core = SCW
+		}
+	}
+	#WRC
+	822 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = WRC
+				}
+			}
+			add_core = WRC
+		}
+	}
+	4910 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = WRC
+				}
+			}
+			add_core = WRC
+		}
+	}
+	#GLG
+	2664 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = GLG
+				}
+			}
+			add_core = GLG
+		}
+	}
+	4916 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = GLG
+				}
+			}
+			add_core = GLG
+		}
+	}
+	263 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = GLG
+				}
+			}
+			add_core = GLG
+		}
+	}
+	835 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = GLG
+				}
+			}
+			add_core = GLG
+		}
+	}
+	828 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = GLG
+				}
+			}
+			add_core = GLG
+		}
+	}
+	4917 = {
+		if = {
+			limit = {
+				owned_by = ROOT
+				NOT = {
+					is_core = GLG
+				}
+			}
+			add_core = GLG
+		}
+	}
+}
+
+add_religious_influence_effect_small = {
+	if = {
+		limit = {
+			uses_papacy = yes
+		}
+		add_papal_influence = 10
+	}
+	if = {
+		limit = {
+			uses_church_aspects = yes
+		}
+		add_church_power = 25
+	}
+	if = {
+		limit = {
+			uses_fervor = yes
+		}
+		add_fervor = 10
+	}
+	if = {
+		limit = {
+			religion = orthodox
+		}
+		add_patriarch_authority = 0.05
+	}
+	if = {
+		limit = {
+			uses_piety = yes
+		}
+		if = {
+			limit = {
+				NOT = {
+					piety = 0
+				}
+			}
+			add_piety = -0.1
+		}
+		else = {
+			add_piety = 0.1
+		}
+	}
+	if = {
+		limit = {
+			religion = uatsdin
+		}
+		add_doom = -5
+	}
+	if = {
+		limit = {
+			religion = uatsdin
+		}
+		add_authority = -5
+	}
+}
+
+add_religious_influence_effect_large = {
+	if = {
+		limit = {
+			uses_papacy = yes
+		}
+		add_papal_influence = 25
+	}
+	if = {
+		limit = {
+			uses_church_aspects = yes
+		}
+		add_church_power = 50
+	}
+	if = {
+		limit = {
+			uses_fervor = yes
+		}
+		add_fervor = 25
+	}
+	if = {
+		limit = {
+			religion = orthodox
+		}
+		add_patriarch_authority = 0.1
+	}
+	if = {
+		limit = {
+			religion_group = muslim
+		}
+		if = {
+			limit = {
+				NOT = {
+					piety = 0
+				}
+			}
+			add_piety = -0.25
+		}
+		else = {
+			add_piety = 0.25
+		}
+	}
+	if = {
+		limit = {
+			religion = uatsdin
+		}
+		add_doom = -10
+	}
+	if = {
+		limit = {
+			religion = uatsdin
+		}
+		add_authority = 10
+	}
+}
+
+anglicize_irish_tag_effect = {
+	trigger_switch = {
+		on_trigger = tag
+		OSS = {
+			override_country_name = OSSORY
+		}
+		OIE = {
+			override_country_name = ORIEL
+		}
+		BRF = {
+			override_country_name = BREFFNY
+		}
+		TRY = {
+			override_country_name = TYRCONNELL
+		}
+		MCM = {
+			override_country_name = MUNSTER
+		}
+		ORD = {
+			override_country_name = ORMOND
+		}
+		MNS = {
+			override_country_name = THOMOND
+		}
+		DMS = {
+			override_country_name = DESMOND
+		}
+		#WXF
+		ICN = {
+			override_country_name = EAST_CONNACHT
+		}
+		ACN = {
+			override_country_name = WEST_CONNACHT
+		}
+		UML = {
+			override_country_name = MAYO
+		}
+		XKY = {
+			override_country_name = KERRY
+		}
+		#WTY
+		IAB = {
+			override_country_name = WEST_BREFFNY
+		}
+		YBR = {
+			override_country_name = LOUTH
+		}
+		SLN = {
+			override_country_name = SLIGO
+		}
+		ULS = {
+			override_country_name = ULSTER
+		}
+		TYR = {
+			override_country_name = TYRONE
+		}
+		KID = {
+			override_country_name = KILDARE
+		}
+		MTH = {
+			override_country_name = MEATH
+		}
+		KEE = {
+			override_country_name = KEENAGHT
+		}
+		FMA = {
+			override_country_name = FERMANAGH
+		}
+		FLY = {
+			override_country_name = OFFALY
+		}
+		UIS = {
+			override_country_name = WESTMEATH
+		}
+		TBE = {
+			override_country_name = ANNALY
+		}
+		BNA = {
+			override_country_name = BALLINACOR
+		}
+		FWS = {
+			override_country_name = FEWS
+		}
+		IVE = {
+			override_country_name = IVEAGH
+		}
+		CBY = {
+			override_country_name = ANTRIM
+		}
+		INH = {
+			override_country_name = INISHOWEN
+		}
+		UMA = {
+			override_country_name = HY_MANY
+		}
+		CCL = {
+			override_country_name = BEAR
+		}
+		EIL = {
+			override_country_name = ELY
+		}
+		CCU = {
+			override_country_name = TULLA
+		}
+		GLN = {
+			override_country_name = GALLEN
+		}
+		LEI = {
+			override_country_name = LEINSTER
+		}
+		CBL = {
+			override_country_name = CREBILLY
+		}
+		FCH = {
+			override_country_name = TIRERAGH
+		}
+		LGO = {
+			override_country_name = LEIX
+		}
+		MGL = {
+			override_country_name = MOYLURG
+		}
+		UID = {
+			override_country_name = ATHENRY
+		}
+		LRG = {
+			override_country_name = LURG
+		}
+		FHM = {
+			override_country_name = FERMOY
+		}
+		BEE = {
+			override_country_name = BREGA
+		}
+		LCH = {
+			override_country_name = LOGHER
+		}
+		CHB = {
+			override_country_name = CARBERY
+		}
+		UIL = {
+			override_country_name = MUSKERRY
+		}
+		BNN = {
+			override_country_name = BURREN
+		}
+		UIB = {
+			override_country_name = CARLOW
+		}
+		AIN = {
+			override_country_name = BANAGH
+		}
+		TUC = {
+			override_country_name = TULLYHOGUE
+		}
+		TYH = {
+			override_country_name = TULLYHAW
+		}
+		LCN = {
+			override_country_name = LECAN
+		}
+		CRK = {
+			override_country_name = CORK
+		}
+		DBL = {
+			override_country_name = DUBLIN
+		}
+		XDG = {
+			override_country_name = DONEGAL
+		}
+		#CNN
+	}
+}
+
+choose_possible_elector_effect = {
+	random_country = {
+		limit = {
+			is_part_of_hre = yes
+			num_of_cities = 5
+			is_emperor = no
+			is_elector = no
+			is_subject = no
+			is_excommunicated = no
+			has_any_disaster = no
+			is_bankrupt = no
+			NOT = { government = republic }
+			calc_true_if = {
+				amount = 1
+				prestige = 50
+				legitimacy_equivalent = 90
+				is_at_war = no
+				has_regency = no
+				culture_group = germanic
+				diplomatic_reputation = 5
+				in_golden_age = yes
+				is_female = no
+				ruler_total_stats = {
+					amount = 14 
+				}
+			}
+		}
+		save_event_target_as = new_elector_$number$
+	}
+	random_country = {
+		limit = {
+			is_part_of_hre = yes
+			num_of_cities = 5
+			is_emperor = no
+			is_elector = no
+			is_subject = no
+			is_excommunicated = no
+			has_any_disaster = no
+			is_bankrupt = no
+			NOT = { government = republic }
+			calc_true_if = {
+				amount = 2
+				prestige = 50
+				legitimacy_equivalent = 90
+				is_at_war = no
+				has_regency = no
+				culture_group = germanic
+				diplomatic_reputation = 5
+				in_golden_age = yes
+				is_female = no
+				ruler_total_stats = {
+					amount = 14 
+				}
+			}
+		}
+		save_event_target_as = new_elector_$number$
+	}
+	random_country = {
+		limit = {
+			is_part_of_hre = yes
+			num_of_cities = 5
+			is_emperor = no
+			is_elector = no
+			is_subject = no
+			is_excommunicated = no
+			has_any_disaster = no
+			is_bankrupt = no
+			NOT = { government = republic }
+			calc_true_if = {
+				amount = 3
+				prestige = 50
+				legitimacy_equivalent = 90
+				is_at_war = no
+				has_regency = no
+				culture_group = germanic
+				diplomatic_reputation = 5
+				in_golden_age = yes
+				is_female = no
+				ruler_total_stats = {
+					amount = 14 
+				}
+			}
+		}
+		save_event_target_as = new_elector_$number$
+	}
+	random_country = {
+		limit = {
+			is_part_of_hre = yes
+			num_of_cities = 5
+			is_emperor = no
+			is_elector = no
+			is_subject = no
+			is_excommunicated = no
+			has_any_disaster = no
+			is_bankrupt = no
+			NOT = { government = republic }
+			calc_true_if = {
+				amount = 4
+				prestige = 50
+				legitimacy_equivalent = 90
+				is_at_war = no
+				has_regency = no
+				culture_group = germanic
+				diplomatic_reputation = 5
+				in_golden_age = yes
+				is_female = no
+				ruler_total_stats = {
+					amount = 14 
+				}
+			}
+		}
+		save_event_target_as = new_elector_$number$
+	}
+	random_country = {
+		limit = {
+			is_part_of_hre = yes
+			num_of_cities = 5
+			is_emperor = no
+			is_elector = no
+			is_subject = no
+			is_excommunicated = no
+			has_any_disaster = no
+			is_bankrupt = no
+			NOT = { government = republic }
+			calc_true_if = {
+				amount = 5
+				prestige = 50
+				legitimacy_equivalent = 90
+				is_at_war = no
+				has_regency = no
+				culture_group = germanic
+				diplomatic_reputation = 5
+				in_golden_age = yes
+				is_female = no
+				ruler_total_stats = {
+					amount = 14 
+				}
+			}
+		}
+		save_event_target_as = new_elector_$number$
+	}
+	random_country = {
+		limit = {
+			is_part_of_hre = yes
+			num_of_cities = 5
+			is_emperor = no
+			is_elector = no
+			is_subject = no
+			is_excommunicated = no
+			has_any_disaster = no
+			is_bankrupt = no
+			NOT = { government = republic }
+			calc_true_if = {
+				amount = 6
+				prestige = 50
+				legitimacy_equivalent = 90
+				is_at_war = no
+				has_regency = no
+				culture_group = germanic
+				diplomatic_reputation = 5
+				in_golden_age = yes
+				is_female = no
+				ruler_total_stats = {
+					amount = 14 
+				}
+			}
+		}
+		save_event_target_as = new_elector_$number$
+	}
+	random_country = {
+		limit = {
+			is_part_of_hre = yes
+			num_of_cities = 5
+			is_emperor = no
+			is_elector = no
+			is_subject = no
+			is_excommunicated = no
+			has_any_disaster = no
+			is_bankrupt = no
+			NOT = { government = republic }
+			calc_true_if = {
+				amount = 7
+				prestige = 50
+				legitimacy_equivalent = 90
+				is_at_war = no
+				has_regency = no
+				culture_group = germanic
+				diplomatic_reputation = 5
+				in_golden_age = yes
+				is_female = no
+				ruler_total_stats = {
+					amount = 14 
+				}
+			}
+		}
+		save_event_target_as = new_elector_$number$
+	}
+	random_country = {
+		limit = {
+			is_part_of_hre = yes
+			num_of_cities = 5
+			is_emperor = no
+			is_elector = no
+			is_subject = no
+			is_excommunicated = no
+			has_any_disaster = no
+			is_bankrupt = no
+			NOT = { government = republic }
+			calc_true_if = {
+				amount = 8
+				prestige = 50
+				legitimacy_equivalent = 90
+				is_at_war = no
+				has_regency = no
+				culture_group = germanic
+				diplomatic_reputation = 5
+				in_golden_age = yes
+				is_female = no
+				ruler_total_stats = {
+					amount = 14 
+				}
+			}
+		}
+		save_event_target_as = new_elector_$number$
+	}
+	random_country = {
+		limit = {
+			is_part_of_hre = yes
+			num_of_cities = 5
+			is_emperor = no
+			is_elector = no
+			is_subject = no
+			is_excommunicated = no
+			has_any_disaster = no
+			is_bankrupt = no
+			NOT = { government = republic }
+			calc_true_if = {
+				amount = 9
+				prestige = 50
+				legitimacy_equivalent = 90
+				is_at_war = no
+				has_regency = no
+				culture_group = germanic
+				diplomatic_reputation = 5
+				in_golden_age = yes
+				is_female = no
+				ruler_total_stats = {
+					amount = 14 
+				}
+			}
+		}
+		save_event_target_as = new_elector_$number$
+	}
+}
+
+annex_canton_or_clear_flag_effect = {
+	if = {
+		limit = {
+			any_country = {
+				NOT = {
+					tag = SWI
+				}
+				has_reform = canton_government
+				capital_scope = {
+					superregion = switzerland_superregion
+				}
+				is_free_or_tributary_trigger = yes
+				ai = yes
+			}
+		}
+		random_country = {
+			limit = {
+				NOT = {
+					tag = SWI
+				}
+				has_reform = canton_government
+				capital_scope = {
+					superregion = switzerland_superregion
+				}
+				is_free_or_tributary_trigger = yes
+				ai = yes
+			}
+			country_event = {
+				id = hremodevents.11
+				days = 1
+			}
+		}
+	}
+	else = {
+		clr_global_flag = swi_formed_flag
+	}
+}
+
+fragment_mongolia_effect = {
+	#Great Horde
+	lower_don_region = {
+		limit = { owned_by = ROOT }
+		add_core = GOL
+		change_culture = mishary
+	}
+	khopyor_region = {
+		limit = { owned_by = ROOT }
+		add_core = GOL
+		change_culture = mishary
+	}
+	sloboda_region = {
+		limit = { owned_by = ROOT }
+		add_core = GOL
+		change_culture = mishary
+	}
+	#Crimea
+	azov_region = {
+		limit = { owned_by = ROOT }
+		add_core = CRI
+		change_culture = crimean
+	}
+	crimea_region = {
+		limit = { owned_by = ROOT }
+		add_core = CRI
+		change_culture = crimean
+	}
+	wild_fields_region = {
+		limit = { owned_by = ROOT }
+		add_core = CRI
+		change_culture = crimean
+	}
+	#Kazan
+	kazan_region = {
+		limit = { owned_by = ROOT }
+		add_core = KAZ
+		change_culture = kazani
+	}
+	mordovia_region = {
+		limit = { owned_by = ROOT }
+		add_core = KAZ
+		change_culture = kazani
+	}
+	#Nogai
+	bashkiria_region = {
+		limit = { owned_by = ROOT }
+		add_core = NOG
+		change_culture = nogaybak
+	}
+	atyrau_area = {
+		limit = { owned_by = ROOT }
+		add_core = NOG
+		change_culture = nogaybak
+	}
+	oral_area = {
+		limit = { owned_by = ROOT }
+		add_core = NOG
+		change_culture = nogaybak
+	}
+	#Astrakhan
+	lower_volga_region = {
+		limit = { owned_by = ROOT }
+		add_core = AST
+		change_culture = astrakhani
+	}
+	kumykia_area = {
+		limit = { owned_by = ROOT }
+		add_core = AST
+		change_culture = astrakhani
+	}
+	kabardia_area = {
+		limit = { owned_by = ROOT }
+		add_core = AST
+		change_culture = astrakhani
+	}
+	#Jalarids
+	lower_mesopotamia_region = {
+		limit = { owned_by = ROOT }
+		add_core = JYA
+	}
+	arabia_region = {
+		limit = { owned_by = ROOT }
+		add_core = JYA
+	}
+	dulaim_area = {
+		limit = { owned_by = ROOT }
+		add_core = JYA
+	}
+	shahrizor_area = {
+		limit = { owned_by = ROOT }
+		add_core = JYA
+	}
+	zab_area = {
+		limit = { owned_by = ROOT }
+		add_core = JYA
+	}
+	#Aq Qoyunlu
+	sophene_region = {
+		limit = { owned_by = ROOT }
+		add_core = AKK
+	}
+	al_jazira_region = {
+		limit = { owned_by = ROOT }
+		add_core = AKK
+	}
+	#Qara Qoyunlu
+	corduene_region = {
+		limit = { owned_by = ROOT }
+		add_core = QAR
+	}
+	armenia_region = {
+		limit = { owned_by = ROOT }
+		add_core = QAR
+	}
+	azerbaijan_region = {
+		limit = { owned_by = ROOT }
+		add_core = QAR
+	}
+	mosul_area = {
+		limit = { owned_by = ROOT }
+		add_core = QAR
+	}
+	zagros_area = {
+		limit = { owned_by = ROOT }
+		add_core = QAR
+	}
+}
+
+change_mongol_culture_effect = {
+	if = {
+		limit = { is_core = GOL }
+		change_culture = mishary
+	}
+	else_if = {
+		limit = { is_core = CRI }
+		change_culture = crimean
+	}
+	else_if = {
+		limit = { is_core = KAZ }
+		change_culture = kazani
+	}
+	else_if = {
+		limit = { is_core = NOG }
+		change_culture = nogaybak
+	}
+	else_if = {
+		limit = { is_core = AST }
+		change_culture = astrakhani
+	}
+}
+
+on_province_medical_building_destroyed_estate_privileges_effect = {
+	if = {
+		limit = {
+			has_province_modifier = estate_holy_orders_development_of_hospitals_mod
+		}
+		remove_province_modifier = estate_holy_orders_development_of_hospitals_mod
+	}
+}
+
+on_province_medical_building_built_estate_privileges_effect = {
+	if = {
+		limit = {
+			owner = { has_estate_privilege = estate_holy_orders_development_of_hospitals }
+			religion_group = christian
+		}
+		add_province_modifier = {
+			name = estate_holy_orders_development_of_hospitals_mod
+			duration = -1
+		}
+	}
+}
+
+on_province_manpower_building_destroyed_estate_privileges_effect = {
+	if = {
+		limit = {
+			has_province_modifier = estate_mamluks_development_of_barracks_mod
+		}
+		remove_province_modifier = estate_mamluks_development_of_barracks_mod
+	}
+}
+
+on_province_manpower_building_built_estate_privileges_effect = {
+	if = {
+		limit = {
+			owner = { has_estate_privilege = estate_mamluks_development_of_barracks }
+			has_owner_accepted_culture = yes
+		}
+		add_province_modifier = {
+			name = estate_mamluks_development_of_barracks_mod
+			duration = -1
+		}
+	}
+}
+
+change_ruthenia_formable_color = {
+	if = { 
+		limit = { was_tag = BLO }
+		change_country_color = { 
+			country = BLO
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = BLR }
+		change_country_color = { 
+			country = BLR
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = BOO }
+		change_country_color = { 
+			country = BOO
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = BTY }
+		change_country_color = { 
+			country = BTY
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = BYV }
+		change_country_color = { 
+			country = BYV
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = CHR }
+		change_country_color = { 
+			country = CHR
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = DGO }
+		change_country_color = { 
+			country = DGO
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = DTV }
+		change_country_color = { 
+			country = DTV
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = KIE }
+		change_country_color = { 
+			country = KIE
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = KMO }
+		change_country_color = { 
+			country = KMO
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = KRH }
+		change_country_color = { 
+			country = KRH
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = KSK }
+		change_country_color = { 
+			country = KSK
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = LSK }
+		change_country_color = { 
+			country = LSK
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = MEY }
+		change_country_color = { 
+			country = MEY
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = MOA }
+		change_country_color = { 
+			country = MOA
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = MOS }
+		change_country_color = { 
+			country = MOS
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = MRM }
+		change_country_color = { 
+			country = MRM
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = MSK }
+		change_country_color = { 
+			country = MSK
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = MSV }
+		change_country_color = { 
+			country = MSV
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = MZH }
+		change_country_color = { 
+			country = MZH
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = NOV }
+		change_country_color = { 
+			country = NOV
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = NZH }
+		change_country_color = { 
+			country = NZH
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = OBL }
+		change_country_color = { 
+			country = OBL
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = OKA }
+		change_country_color = { 
+			country = OKA
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = ONU }
+		change_country_color = { 
+			country = ONU
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = ORY }
+		change_country_color = { 
+			country = ORY
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = PLL }
+		change_country_color = { 
+			country = PLL
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = PLT }
+		change_country_color = { 
+			country = PLT
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = PNK }
+		change_country_color = { 
+			country = PNK
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = PSK }
+		change_country_color = { 
+			country = PSK
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = PZS }
+		change_country_color = { 
+			country = PZS
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = RSO }
+		change_country_color = { 
+			country = RSO
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = RYA }
+		change_country_color = { 
+			country = RYA
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = SDB }
+		change_country_color = { 
+			country = SDB
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = SKS }
+		change_country_color = { 
+			country = SKS
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = SMO }
+		change_country_color = { 
+			country = SMO
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = SPZ }
+		change_country_color = { 
+			country = SPZ
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = SVK }
+		change_country_color = { 
+			country = SVK
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = TAA }
+		change_country_color = { 
+			country = TAA
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = TBS }
+		change_country_color = { 
+			country = TBS
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = TMT }
+		change_country_color = { 
+			country = TMT
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = TPT }
+		change_country_color = { 
+			country = TPT
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = TUV }
+		change_country_color = { 
+			country = TUV
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = TVE }
+		change_country_color = { 
+			country = TVE
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = UGL }
+		change_country_color = { 
+			country = UGL
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = VBK }
+		change_country_color = { 
+			country = VBK
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = VDR }
+		change_country_color = { 
+			country = VDR
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = VHN }
+		change_country_color = { 
+			country = VHN
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = VOL }
+		change_country_color = { 
+			country = VOL
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = VOO }
+		change_country_color = { 
+			country = VOO
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = VTY }
+		change_country_color = { 
+			country = VTY
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = XKA }
+		change_country_color = { 
+			country = XKA
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = XMO }
+		change_country_color = { 
+			country = XMO
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = XPY }
+		change_country_color = { 
+			country = XPY
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = XSZ }
+		change_country_color = { 
+			country = XSZ
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = YAR }
+		change_country_color = { 
+			country = YAR
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = YYV }
+		change_country_color = { 
+			country = YYV
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = ZNY }
+		change_country_color = { 
+			country = ZNY
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+}
+
+change_ireland_formable_color = {
+	if = { 
+		limit = { was_tag = ACN }
+		change_country_color = { 
+			country = ACN
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = AIN }
+		change_country_color = { 
+			country = AIN
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = BEE }
+		change_country_color = { 
+			country = BEE
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = BNA }
+		change_country_color = { 
+			country = BNA
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = BNN }
+		change_country_color = { 
+			country = BNN
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = BRF }
+		change_country_color = { 
+			country = BRF
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = CBL }
+		change_country_color = { 
+			country = CBL
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = CBY }
+		change_country_color = { 
+			country = CBY
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = CCL }
+		change_country_color = { 
+			country = CCL
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = CCU }
+		change_country_color = { 
+			country = CCU
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = CHB }
+		change_country_color = { 
+			country = CHB
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = CNN }
+		change_country_color = { 
+			country = CNN
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = CRK }
+		change_country_color = { 
+			country = CRK
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = DBL }
+		change_country_color = { 
+			country = DBL
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = DMS }
+		change_country_color = { 
+			country = DMS
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = EIL }
+		change_country_color = { 
+			country = EIL
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = FCH }
+		change_country_color = { 
+			country = FCH
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = FHM }
+		change_country_color = { 
+			country = FHM
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = FLY }
+		change_country_color = { 
+			country = FLY
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = FMA }
+		change_country_color = { 
+			country = FMA
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = FWS }
+		change_country_color = { 
+			country = FWS
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = GLN }
+		change_country_color = { 
+			country = GLN
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = IAB }
+		change_country_color = { 
+			country = IAB
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = ICN }
+		change_country_color = { 
+			country = ICN
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = INH }
+		change_country_color = { 
+			country = INH
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = IVE }
+		change_country_color = { 
+			country = IVE
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = KEE }
+		change_country_color = { 
+			country = KEE
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = KID }
+		change_country_color = { 
+			country = KID
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = LCH }
+		change_country_color = { 
+			country = LCH
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = LCN }
+		change_country_color = { 
+			country = LCN
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = LEI }
+		change_country_color = { 
+			country = LEI
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = LGO }
+		change_country_color = { 
+			country = LGO
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = LRG }
+		change_country_color = { 
+			country = LRG
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = MCM }
+		change_country_color = { 
+			country = MCM
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = MGL }
+		change_country_color = { 
+			country = MGL
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = MNS }
+		change_country_color = { 
+			country = MNS
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = MTH }
+		change_country_color = { 
+			country = MTH
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = OIE }
+		change_country_color = { 
+			country = OIE
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = ORD }
+		change_country_color = { 
+			country = ORD
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = OSS }
+		change_country_color = { 
+			country = OSS
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = SLN }
+		change_country_color = { 
+			country = SLN
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = TBE }
+		change_country_color = { 
+			country = TBE
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = TRY }
+		change_country_color = { 
+			country = TRY
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = TUC }
+		change_country_color = { 
+			country = TUC
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = TYH }
+		change_country_color = { 
+			country = TYH
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = TYR }
+		change_country_color = { 
+			country = TYR
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = UIB }
+		change_country_color = { 
+			country = UIB
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = UID }
+		change_country_color = { 
+			country = UID
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = UIL }
+		change_country_color = { 
+			country = UIL
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = UIS }
+		change_country_color = { 
+			country = UIS
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = ULS }
+		change_country_color = { 
+			country = ULS
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = UMA }
+		change_country_color = { 
+			country = UMA
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = UML }
+		change_country_color = { 
+			country = UML
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = WTY }
+		change_country_color = { 
+			country = WTY
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = XDG }
+		change_country_color = { 
+			country = XDG
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = XKY }
+		change_country_color = { 
+			country = XKY
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+	if = { 
+		limit = { was_tag = YBR }
+		change_country_color = { 
+			country = YBR
+		}
+		set_country_flag = has_overriden_color_flag
+	}
+}
+
+assign_cores_of_jerusalem_fiefs_effect = {
+	hidden_effect = {
+		#KOJ
+		4974 = {
+			change_culture = outremer
+			change_religion = catholic
+			add_core = KOJ
+			remove_core = ROOT
+		}
+		if = {
+			limit = {
+				4948 = {
+					OR = {
+						owner = { ai = yes }
+						is_capital = no
+					}
+				}
+			}
+			4948 = {
+				add_core = KOJ
+				remove_core = ROOT
+			}
+		}
+		if = {
+			limit = {
+				4955 = {
+					OR = {
+						owner = { ai = yes }
+						is_capital = no
+					}
+				}
+			}
+			4955 = {
+				add_core = KOJ
+				remove_core = ROOT
+			}
+		}
+		if = {
+			limit = {
+				4964 = {
+					OR = {
+						owner = { ai = yes }
+						is_capital = no
+					}
+				}
+			}
+			4964 = {
+				add_core = KOJ
+				remove_core = ROOT
+			}
+		}
+		if = {
+			limit = {
+				4965 = {
+					OR = {
+						owner = { ai = yes }
+						is_capital = no
+					}
+				}
+			}
+			4965 = {
+				add_core = KOJ
+				remove_core = ROOT
+			}
+		}
+		if = {
+			limit = {
+				4968 = {
+					OR = {
+						owner = { ai = yes }
+						is_capital = no
+					}
+				}
+			}
+			4968 = {
+				add_core = KOJ
+				remove_core = ROOT
+			}
+		}
+		if = {
+			limit = {
+				4969 = {
+					OR = {
+						owner = { ai = yes }
+						is_capital = no
+					}
+				}
+			}
+			4969 = {
+				add_core = KOJ
+				remove_core = ROOT
+			}
+		}
+		if = {
+			limit = {
+				4970 = {
+					OR = {
+						owner = { ai = yes }
+						is_capital = no
+					}
+				}
+			}
+			4970 = {
+				add_core = KOJ
+				remove_core = ROOT
+			}
+		}
+		if = {
+			limit = {
+				4973 = {
+					OR = {
+						owner = { ai = yes }
+						is_capital = no
+					}
+				}
+			}
+			4973 = {
+				add_core = KOJ
+				remove_core = ROOT
+			}
+		}
+		if = {
+			limit = {
+				4975 = {
+					OR = {
+						owner = { ai = yes }
+						is_capital = no
+					}
+				}
+			}
+			4975 = {
+				add_core = KOJ
+				remove_core = ROOT
+			}
+		}
+		if = {
+			limit = {
+				4980 = {
+					OR = {
+						owner = { ai = yes }
+						is_capital = no
+					}
+				}
+			}
+			4980 = {
+				add_core = KOJ
+				remove_core = ROOT
+			}
+		}
+		if = {
+			limit = {
+				4983 = {
+					OR = {
+						owner = { ai = yes }
+						is_capital = no
+					}
+				}
+			}
+			4983 = {
+				add_core = KOJ
+				remove_core = ROOT
+			}
+		}
+		if = {
+			limit = {
+				4986 = {
+					OR = {
+						owner = { ai = yes }
+						is_capital = no
+					}
+				}
+			}
+			4986 = {
+				add_core = KOJ
+				remove_core = ROOT
+			}
+		}
+		release = KOJ
+		KOJ = {
+			set_government_rank = 5
+			set_capital = 4974
+			add_treasury = 200
+			add_prestige = 40
+			add_manpower = 5
+			add_accepted_culture = al_suryah_arabic
+			add_stability = 3
+			remove_heir = { allow_new_heir = no }
+			define_ruler = {
+				dynasty = "van Vlaanderen"
+				adm = 5
+				dip = 5
+				mil = 6
+			}
+			define_ruler_to_general = {
+				fire = 5
+				shock = 5
+				manuever = 2
+				siege = 6
+			}
+			add_ruler_personality = zealot_personality
+			add_ruler_personality = tactical_genius_personality
+			add_ruler_personality = inspiring_leader_personality
+			change_government = monarchy
+			add_government_reform = holy_state_reform
+			capital_scope = {
+				build_to_forcelimit = {
+					infantry = 0.8
+					cavalry = 0.2
+				}
+			}
+		}
+		add_truce_with = KOJ
+		#ADL
+		if = {
+			limit = { NOT = { exists = ADL } }
+			if = {
+				limit = {
+					4952 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4952 = {
+					add_core = ADL
+					remove_core = ROOT
+				}
+			}
+			4952 = { owner = { release = ADL } }
+			ADL = {
+				set_capital = 4952
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "d'Adelon" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = ADL
+		}
+		#ARF
+		if = {
+			limit = { NOT = { exists = ARF } }
+			if = {
+				limit = {
+					4967 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4967 = {
+					add_core = ARF
+					remove_core = ROOT
+				}
+			}
+			4967 = { owner = { release = ARF } }
+			ARF = {
+				set_capital = 4967
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "d'Arsuf" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = ARF
+		}
+		#BIR
+		if = {
+			limit = { NOT = { exists = BIR } }
+			if = {
+				limit = {
+					4944 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4944 = {
+					add_core = BIR
+					remove_core = ROOT
+				}
+			}
+			4944 = { owner = { release = BIR } }
+			BIR = {
+				set_capital = 4944
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "de Guînes" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = BIR
+		}
+		#BLC
+		if = {
+			limit = { NOT = { exists = BLC } }
+			if = {
+				limit = {
+					4979 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4979 = {
+					add_core = BLC
+					remove_core = ROOT
+				}
+			}
+			4979 = { owner = { release= BLC } }
+			BLC = {
+				set_capital = 4979
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "de Brisebarre" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = BLC
+		}
+		#BSA
+		if = {
+			limit = { NOT = { exists = BSA } }
+			if = {
+				limit = {
+					4961 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4961 = {
+					add_core = BSA
+					remove_core = ROOT
+				}
+			}
+			4961 = { owner = { release = BSA } }
+			BSA = {
+				set_capital = 4961
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "de Bessan" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = BSA
+		}
+		#CAE
+		if = {
+			limit = { NOT = { exists = CAE } }
+			if = {
+				limit = {
+					4962 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4962 = {
+					add_core = CAE
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4963 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4963 = {
+					add_core = CAE
+					remove_core = ROOT
+				}
+			}
+			4963 = { owner = { release = CAE } }
+			CAE = {
+				set_capital = 4963
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "Grenier" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = CAE
+		}
+		#GEE
+		if = {
+			limit = { NOT = { exists = GEE } }
+			if = {
+				limit = {
+					4953 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4953 = {
+					add_core = GEE
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4954 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4954 = {
+					add_core = GEE
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4956 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4956 = {
+					add_core = GEE
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4957 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4957 = {
+					add_core = GEE
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4960 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4960 = {
+					add_core = GEE
+					remove_core = ROOT
+				}
+			}
+			4957 = { owner = { release = GEE } }
+			GEE = {
+				set_capital = 4957
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "de Hauteville" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = GEE
+		}
+		#HBR
+		if = {
+			limit = { NOT = { exists = HBR } }
+			if = {
+				limit = {
+					4984 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4984 = {
+					add_core = HBR
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4987 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4987 = {
+					add_core = HBR
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4988 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4988 = {
+					add_core = HBR
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4992 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4992 = {
+					add_core = HBR
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4993 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4993 = {
+					add_core = HBR
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					5932 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				5932 = {
+					add_core = HBR
+					remove_core = ROOT
+				}
+			}
+			4988 = { owner = { release = HBR } }
+			HBR = {
+				set_capital = 4988
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "de St Abraham" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = HBR
+		}
+		#HFA
+		if = {
+			limit = { NOT = { exists = HFA } }
+			if = {
+				limit = {
+					4958 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4958 = {
+					add_core = HFA
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4959 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4959 = {
+					add_core = HFA
+					remove_core = ROOT
+				}
+			}
+			4958 = { owner = { release = HFA } }
+			HFA = {
+				set_capital = 4958
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "Carpenel" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = HFA
+		}
+		#IBE
+		if = {
+			limit = { NOT = { exists = IBE } }
+			if = {
+				limit = {
+					4968 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4968 = {
+					add_core = IBE
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4978 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4978 = {
+					add_core = IBE
+					remove_core = ROOT
+				}
+			}
+		}
+		#JFF
+		if = {
+			limit = { NOT = { exists = JFF } }
+			if = {
+				limit = {
+					4971 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4971 = {
+					add_core = JFF
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4978 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4978 = {
+					add_core = JFF
+					remove_core = ROOT
+				}
+			}
+			4971 = { owner = { release = JFF } }
+			JFF = {
+				set_capital = 4971
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "du Puiset" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = JFF
+		}
+		#OTJ
+		if = {
+			limit = { NOT = { exists = OTJ } }
+			kerak_area = {
+				limit = {
+					OR = {
+						owner = { ai = yes }
+						is_capital = no
+					}
+				}
+				add_core = OTJ
+				remove_core = ROOT
+			}
+			if = {
+				limit = {
+					4995 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4995 = {
+					add_core = OTJ
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4997 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4997 = {
+					add_core = OTJ
+					remove_core = ROOT
+				}
+			}
+
+			if = {
+				limit = {
+					4998 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4998 = {
+					add_core = OTJ
+					remove_core = ROOT
+				}
+			}
+			4990 = { owner = { release = OTJ } }
+			OTJ = {
+				set_capital = 4990
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "de Le Puy" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = OTJ
+		}
+		#RML
+		if = {
+			limit = { NOT = { exists = RML } }
+			if = {
+				limit = {
+					4972 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4972 = {
+					add_core = RML
+					remove_core = ROOT
+				}
+			}
+			4972 = { owner = { release = RML } }
+			RML = {
+				set_capital = 1
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "de Ramla" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = RML
+		}
+		# if = {
+		# 	limit = { NOT = { exists = SAO } }
+		# 	if = {
+		# 		limit = {
+		# 			3050 = {
+		# 				OR = {
+		# 					owner = { ai = yes }
+		# 					is_capital = no
+		# 				}
+		# 			}
+		# 		}
+		# 		3050 = {
+		# 			add_core = SAO
+		# 		}
+		# 	}
+		# 	if = {
+		# 		limit = {
+		# 			3052 = {
+		# 				OR = {
+		# 					owner = { ai = yes }
+		# 					is_capital = no
+		# 				}
+		# 			}
+		# 		}
+		# 		3052 = {
+		# 			add_core = SAO
+		# 		}
+		# 	}
+		# }
+		if = {
+			limit = { NOT = { exists = SCU } }
+			if = {
+				limit = {
+					4945 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4945 = {
+					add_core = SCU
+					remove_core = ROOT
+				}
+			}
+		}
+		#SID
+		if = {
+			limit = { NOT = { exists = SID } }
+			if = {
+				limit = {
+					4945 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4945 = {
+					add_core = SID
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4946 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4946 = {
+					add_core = SID
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4947 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4947 = {
+					add_core = SID
+					remove_core = ROOT
+				}
+			}
+			4947 = { owner = { release = SID } }
+			SID = {
+				set_capital = 4947
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "Grenier" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = SID
+		}
+		#SKE
+		if = {
+			limit = { NOT = { exists = SKE } }
+			if = {
+				limit = {
+					4951 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4951 = {
+					add_core = SKE
+					remove_core = ROOT
+				}
+			}
+			4951 = { owner = { release = SKE } }
+			SKE = {
+				set_capital = 4951
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "de Scandeleon" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = SKE
+		}
+		#TEM
+		if = {
+			limit = { NOT = { exists = TEM } }
+			if = {
+				limit = {
+					3030 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				3030 = {
+					add_core = TEM
+				}
+			}
+			3030 = { owner = { release = TEM } }
+			TEM = {
+				change_government = theocracy
+				add_government_reform = crusader_order_reform
+				set_capital = 3030
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "de Payens" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = TEM
+		}
+		#TPI		
+		if = {
+			limit = { NOT = { exists = TPI } }
+			if = {
+				limit = {
+					3026 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				3026 = {
+					add_core = TPI
+				}
+			}
+			if = {
+				limit = {
+					3027 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				3027 = {
+					add_core = TPI
+				}
+			}
+			if = {
+				limit = {
+					3028 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				3028 = {
+					add_core = TPI
+				}
+			}
+			if = {
+				limit = {
+					3029 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				3029 = {
+					add_core = TPI
+				}
+			}
+			if = {
+				limit = {
+					3031 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				3031 = {
+					add_core = TPI
+				}
+			}
+			if = {
+				limit = {
+					3108 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				3108 = {
+					add_core = TPI
+				}
+			}
+			3027 = { owner = { release = TPI } }
+			TPI = {
+				set_capital = 3027
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "Raimonding" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = TPI
+		}
+		#KNI
+		if = {
+			limit = { NOT = { exists = KNI } }
+			if = {
+				limit = {
+					3032 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				3032 = {
+					add_core = KNI
+					if = {
+						limit = {
+							has_dlc = "Leviathan"
+							NOT = {
+								has_great_project = {
+									type = krak_des_chevaliers
+									tier = 2
+								}
+							}
+
+						}
+						set_great_project_tier_2 = {
+							type = krak_des_chevaliers
+						} 
+					}
+				}
+			}
+			3032 = { owner = { release = KNI } }
+			KNI = {
+				change_government = theocracy
+				add_government_reform = crusader_order_reform
+				set_capital = 3032
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "du Puy" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = KNI
+		}
+		#TXO
+		if = {
+			limit = { NOT = { exists = TXO } }
+			if = {
+				limit = {
+					4949 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4949 = {
+					add_core = TXO
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					4950 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4950 = {
+					add_core = TXO
+					remove_core = ROOT
+				}
+			}
+			4949 = { owner = { release = TXO } }
+			TXO = {
+				change_government = theocracy
+				add_government_reform = autocracy_reform
+				set_capital = 4949
+				add_accepted_culture = al_suryah_arabic
+				add_stability = 3
+				define_ruler = { dynasty = "de Toron" }
+				KOJ = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = TXO
+		}
+		#TYE
+		if = {
+			limit = { NOT = { exists = TYE } }
+			if = {
+				limit = {
+					4948 = {
+						OR = {
+							owner = { ai = yes }
+							is_capital = no
+						}
+					}
+				}
+				4948 = {
+					add_core = TYE
+				}
+			}
+		}
+	}
+}
+
+assign_cores_of_latin_empire_fiefs_effect = {
+	hidden_effect = {
+		thrace_region = {
+			limit = { owned_by = ROOT }
+			add_core = LAE
+		}
+		chios_area = {
+			limit = { owned_by = ROOT }
+			add_core = LAE
+		}
+		release = LAE
+		LAE = {
+			set_government_rank = 6
+			change_government = monarchy
+			add_government_reform = frankokratia_reform
+			set_capital = 2233
+			add_treasury = 200
+			add_prestige = 40
+			add_manpower = 5
+			add_accepted_culture = greek
+			add_stability = 3
+			remove_heir = { allow_new_heir = no }
+			define_ruler = { dynasty = "van Vlaanderen" }
+			capital_scope = {
+				build_to_forcelimit = {
+					infantry = 0.8
+					cavalry = 0.2
+				}
+			}
+		}
+		#TSS
+		if = {
+			limit = { NOT = { exists = TSS } }
+			macedonia_region = {
+				limit = { owned_by = ROOT }
+				add_core = TSS
+				remove_core = ROOT
+			}
+			thessalia_area = {
+				limit = { owned_by = ROOT }
+				add_core = TSS
+				remove_core = ROOT
+			}
+			release = TSS
+			TSS = {
+				change_government = monarchy
+				add_government_reform = feudalism_reform
+				set_capital = 2398
+				add_accepted_culture = greek
+				add_stability = 3
+				define_ruler = { dynasty = "Aleraming" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+				LAE = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+			}
+			add_truce_with = TSS
+		}
+		#PPO
+		if = {
+			limit = { NOT = { exists = PPO } }
+			bulgariasouth_region = {
+				limit = { owned_by = ROOT }
+				add_core = PPO
+				remove_core = ROOT
+			}
+			release = PPO
+			PPO = {
+				change_government = monarchy
+				add_government_reform = feudalism_reform
+				set_capital = 2131
+				add_accepted_culture = greek
+				add_stability = 3
+				define_ruler = { dynasty = "de Trit" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+				LAE = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+			}
+			add_truce_with = PPO
+		}
+		#ACH
+		if = {
+			limit = { NOT = { exists = ACH } }
+			achaea_area = {
+				limit = {
+					owned_by = ROOT
+					NOT = { area = athens_area }
+				}
+				add_core = ACH
+				remove_core = ROOT
+			}
+			messinia_area = {
+				limit = {
+					owned_by = ROOT
+					NOT = { area = athens_area }
+				}
+				add_core = ACH
+				remove_core = ROOT
+			}
+			release = ACH
+			ACH = {
+				change_government = monarchy
+				add_government_reform = feudalism_reform
+				set_capital = 5382
+				add_accepted_culture = peloponnesian
+				add_stability = 3
+				define_ruler = { dynasty = "de Villehardouin" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+				LAE = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+			}
+			add_truce_with = ACH
+		}
+		#ATH
+		if = {
+			limit = { NOT = { exists = ATH } }
+			athens_area = {
+				limit = {
+					owned_by = ROOT
+					NOT = { province_id = 2387 }
+					NOT = { province_id = 612 }
+				}
+				add_core = ATH
+				remove_core = ROOT
+			}
+			release = ATH
+			ATH = {
+				change_government = monarchy
+				add_government_reform = feudalism_reform
+				set_capital = 2828
+				add_accepted_culture = peloponnesian
+				add_stability = 3
+				define_ruler = { dynasty = "de la Roche" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+				LAE = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+			}
+			add_truce_with = ATH
+		}
+		#NAX
+		if = {
+			limit = { NOT = { exists = NAX } }
+			cyclades_area = {
+				limit = { owned_by = ROOT }
+				add_core = NAX
+				remove_core = ROOT
+			}
+			release = NAX
+			NAX = {
+				change_government = monarchy
+				add_government_reform = feudalism_reform
+				set_capital = 2686
+				add_accepted_culture = peloponnesian
+				add_stability = 3
+				define_ruler = { dynasty = "Sanudo" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+				LAE = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+			}
+			add_truce_with = NAX
+		}
+		#CRT
+		if = {
+			limit = { NOT = { exists = CRT } }
+			crete_area = {
+				limit = { owned_by = ROOT }
+				add_core = CRT
+				remove_core = ROOT
+			}
+			release = CRT
+			CRT = {
+				change_government = monarchy
+				add_government_reform = feudalism_reform
+				set_capital = 2686
+				add_accepted_culture = peloponnesian
+				add_stability = 3
+				define_ruler = { dynasty = "de Castello" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = CRT
+		}
+		#NGR
+		if = {
+			limit = { NOT = { exists = NGR } }
+			euboia_area = {
+				limit = {
+					owned_by = ROOT
+					NOT = { province_id = 404 }
+					NOT = { province_id = 5325 }
+				}
+				add_core = NGR
+				remove_core = ROOT
+			}
+			release = NGR
+			NGR = {
+				change_government = monarchy
+				add_government_reform = feudalism_reform
+				set_capital = 2335
+				add_accepted_culture = peloponnesian
+				add_stability = 3
+				define_ruler = { dynasty = "dalle Carcera" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+				LAE = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+			}
+			add_truce_with = NAX
+		}
+		#CYP
+		if = {
+			limit = { NOT = { exists = CYP } }
+			cyprus_area = {
+				limit = { owned_by = ROOT }
+				add_core = CYP
+				remove_core = ROOT
+			}
+			release = CYP
+			CYP = {
+				change_government = monarchy
+				add_government_reform = feudalism_reform
+				add_accepted_culture = cypriot
+				add_stability = 3
+				define_ruler = { dynasty = "de Lusignan" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = CYP
+		}
+		#EPI
+		if = {
+			limit = { NOT = { exists = EPI } }
+			albania_region = {
+				limit = { owned_by = ROOT }
+				add_core = EPI
+				remove_core = ROOT
+			}
+			furthergreece_region = {
+				limit = {
+					owned_by = ROOT
+					NOT = { area = thessalia_area }
+					NOT = { province_id = 2403 }
+				}
+				add_core = EPI
+				remove_core = ROOT
+			}
+			release = EPI
+			EPI = {
+				change_government = monarchy
+				add_government_reform = feudalism_reform
+				define_ruler = { dynasty = "Angelos" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = EPI
+		}
+		#MOE
+		if = {
+			limit = { NOT = { exists = MOE } }
+			morea_area = {
+				limit = {
+					NOT = { province_id = 400 }
+					owned_by = ROOT
+				}
+				add_core = MOE
+				remove_core = ROOT
+			}
+			release = MOE
+			MOE = {
+				change_government = monarchy
+				add_government_reform = autocracy_reform
+				define_ruler = { dynasty = "Sgouros" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = MOE
+		}
+		#XMI
+		if = {
+			limit = { NOT = { exists = XMI } }
+			if = {
+				limit = {
+					400 = { owned_by = ROOT }
+				}
+				400 = {
+					add_core = XMI
+					remove_core = ROOT
+				}
+			}
+			release = XMI
+			XMI = {
+				change_government = tribal
+				add_government_reform = tribal_despotism
+				define_ruler = { dynasty = "Kladas" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+			}
+			add_truce_with = XMI
+		}
+		#TNS
+		if = {
+			limit = { NOT = { exists = TNS } }
+			if = {
+				limit = {
+					404 = { owned_by = ROOT }
+				}
+				404 = {
+					add_core = TNS
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					5325 = { owned_by = ROOT }
+				}
+				5325 = {
+					add_core = TNS
+					remove_core = ROOT
+				}
+			}
+			release = TNS
+			TNS = {
+				change_government = monarchy
+				add_government_reform = feudalism_reform
+				define_ruler = { dynasty = "Ghisi" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+				LAE = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+			}
+			add_truce_with = TNS
+		}
+		#BDN
+		if = {
+			limit = { NOT = { exists = BDN } }
+			if = {
+				limit = {
+					612 = { owned_by = ROOT }
+				}
+				612 = {
+					add_core = BDN
+					remove_core = ROOT
+				}
+			}
+			release = BDN
+			BDN = {
+				change_government = monarchy
+				add_government_reform = feudalism_reform
+				define_ruler = { dynasty = "Pallavicino" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+				LAE = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+			}
+			add_truce_with = BDN
+		}
+		#SAA
+		if = {
+			limit = { NOT = { exists = SAA } }
+			if = {
+				limit = {
+					2387 = { owned_by = ROOT }
+				}
+				2387 = {
+					add_core = SAA
+					remove_core = ROOT
+				}
+			}
+			if = {
+				limit = {
+					2403 = { owned_by = ROOT }
+				}
+				2403 = {
+					add_core = SAA
+					remove_core = ROOT
+				}
+			}
+			release = SAA
+			SAA = {
+				change_government = monarchy
+				add_government_reform = autocracy_reform
+				define_ruler = { dynasty = "d'Autremencourt" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+				LAE = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+			}
+			add_truce_with = SAA
+		}
+		#TSA
+		if = {
+			limit = { NOT = { exists = TSA } }
+			if = {
+				limit = {
+					2339 = { owned_by = ROOT }
+				}
+				2339 = {
+					add_core = TSA
+					remove_core = ROOT
+				}
+			}
+			release = TSA
+			TSA = {
+				change_government = monarchy
+				add_government_reform = autocracy_reform
+				define_ruler = { dynasty = "Navigajoso" }
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.8
+						cavalry = 0.2
+					}
+				}
+				TSA = {
+					create_subject = {
+						subject_type = seigneury
+						subject = PREV
+					}
+				}
+			}
+			add_truce_with = TSA
+		}
+	}
+}

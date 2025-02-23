@@ -1,0 +1,8 @@
+government = monarchy
+add_government_reform = feudalism_reform
+government_rank = 3
+primary_culture = abkhazian
+religion = orthodox
+technology_group = eastern
+capital = 3594
+historical_friend = GEO

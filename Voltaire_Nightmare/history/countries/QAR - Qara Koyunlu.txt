@@ -1,0 +1,162 @@
+government = tribal
+add_government_reform = tribal_federation
+government_rank = 5
+primary_culture = mongol
+add_accepted_culture = kurdish
+religion = sunni
+technology_group = muslim
+religious_school = hanafi_school
+capital = 3690 #Mosul
+
+#Sutayids
+1335.12.1 = {
+	monarch = {
+		name = "Hajji Taghay"
+		dynasty = "Sunud"
+		adm = 3
+		dip = 5
+		mil = 0
+	}
+}
+1343.1.1 = {
+	monarch = {
+		name = "Ibrahim Shah"
+		dynasty = "Sunud"
+		adm = 1
+		dip = 1
+		mil = 0
+	}
+}
+1349.1.1 = {
+	monarch = {
+		name = "Pir Muhammad"
+		dynasty = "Sunud"
+		adm = 0
+		dip = 0
+		mil = 0
+	}
+}
+1350.1.1 = {
+	monarch = {
+		name = "Husayn Beg"
+		dynasty = "Taybugha"
+		adm = 2
+		dip = 1
+		mil = 3
+	}
+}
+
+#Qara Qoyunlu Usurpation
+1351.1.1 = {
+	religion = shiite
+	religious_school = jafari_school
+	primary_culture = azerbaijani
+	add_accepted_culture = armenian
+	monarch = {
+		name = "Bairam Khwaja"
+		dynasty = "Qara Qoyunlu"
+		birth_date = 1340.1.1
+		adm = 3
+		dip = 4
+		mil = 3
+	}
+}
+1378.1.1 = {
+	monarch = {
+		name = "Qara Muhammad"
+		dynasty = "Qara Qoyunlu"
+		birth_date = 1340.1.1
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+	heir = {
+		name = "Qara Yusuf"
+		monarch_name = "Qara Yusuf"
+		dynasty = "Qara Qoyunlu"
+		birth_date = 1357.1.1
+		death_date = 1420.1.1
+		claim = 90
+		adm = 2
+		dip = 2
+		mil = 3
+	}
+}
+1388.1.1 = {
+	monarch = {
+		name = "Qara Yusuf"
+		dynasty = "Qara Qoyunlu"
+		birth_date = 1357.1.1
+		adm = 2
+		dip = 2
+		mil = 3
+	}
+	heir = {
+		name = "Iskander"
+		monarch_name = "Iskander"
+		dynasty = "Qara Qoyunlu"
+		birth_date = 1388.1.1
+		death_date = 1436.4.22
+		claim = 50
+		adm = 2
+		dip = 1
+		mil = 2
+	}
+}
+1420.1.1 = {
+	monarch = {
+		name = "Iskander"
+		dynasty = "Qara Qoyunlu"
+		birth_date = 1388.1.1
+		adm = 2
+		dip = 1
+		mil = 2
+	}
+	heir = {
+		name = "Jahân"
+		monarch_name = "Jahân Shâh"
+		dynasty = "Qara Qoyunlu"
+		birth_date = 1397.1.1
+		death_date = 1467.11.11
+		claim = 95
+		adm = 3
+		dip = 4
+		mil = 5
+	}
+}
+1436.4.22 = {
+	monarch = {
+		name = "Jahân Shâh"
+		dynasty = "Qara Qoyunlu"
+		birth_date = 1397.1.1
+		adm = 3
+		dip = 4
+		mil = 5
+	}
+	clear_scripted_personalities = yes
+	add_ruler_personality = bold_fighter_personality
+	add_piety = -0.6
+}
+1438.1.1 = {
+	heir = {
+		name = "Hasan ‘Alî"
+		monarch_name = "Hasan ‘Alî"
+		dynasty = "Qara Qoyunlu"
+		birth_date = 1438.1.1
+		death_date = 1468.1.1
+		claim = 95
+		adm = 2
+		dip = 1
+		mil = 0
+	}
+}
+1467.11.11 = {
+	monarch = {
+		name = "Hasan ‘Alî"
+		dynasty = "Qara Qoyunlu"
+		birth_date = 1438.1.1
+		adm = 2
+		dip = 1
+		mil = 0
+	}
+}

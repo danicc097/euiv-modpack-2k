@@ -1,0 +1,24 @@
+name="Extended Timeline"
+replace_path="customizable_localization"
+replace_path="history/countries"
+replace_path="history/provinces"
+replace_path="map/random"
+tags={
+	"Expansion"
+	"Gameplay"
+	"Military"
+	"National Ideas"
+	"Religion"
+	"Events"
+	"Historical"
+	"Map"
+	"Missions And Decisions"
+	"New Nations"
+}
+dependencies={
+	"Xorme - AI"
+}
+picture="extended_timeline.jpg"
+version="1.18.0"
+supported_version="v1.37.*"
+path="mod/Extended_Timeline/"

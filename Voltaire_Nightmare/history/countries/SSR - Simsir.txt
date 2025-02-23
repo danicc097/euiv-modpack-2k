@@ -1,0 +1,131 @@
+government = tribal
+add_government_reform = tribal_federation
+government_rank = 4
+primary_culture = chechen
+religion = vainakh
+technology_group = north_american
+capital = 3772
+
+#Founded during decline of GLH
+1362.1.1 = {
+	monarch = {
+		name = "Khour"
+		dynasty = "Sadoy"
+		religion = orthodox
+		adm = 2
+		dip = 3
+		mil = 3
+	}
+}
+1395.4.15 = { #destroyed by Timur
+	monarch = {
+		name = "Makhama"
+		dynasty = "Sadoy"
+		religion = sunni
+		adm = 0
+		dip = 0
+		mil = 0
+	}
+}
+#1396.1.1 to DDZ
+
+#Bragun-Tyumen Khanate
+1578.1.1 = {
+	government_rank = 3
+	government = tribal
+	add_government_reform = steppe_horde
+	technology_group = nomad_group
+	religion = sunni
+	religious_school = shafii_school
+	primary_culture = hunnic
+	capital = 6242
+	monarch = {
+		name = "Kuhdaynad"
+		dynasty = "Borjigin"
+		adm = 2
+		dip = 3
+		mil = 4
+	}
+}
+1584.1.1 = {
+	monarch = {
+		name = "Bahadur"
+		dynasty = "Borjigin"
+		adm = 3
+		dip = 3
+		mil = 2
+	}
+}
+1612.1.1 = {
+	monarch = {
+		name = "Giray"
+		dynasty = "Borjigin"
+		adm = 1
+		dip = 3
+		mil = 4
+	}
+}
+1641.1.1 = {
+	monarch = {
+		name = "Beg Sultan"
+		dynasty = "Borjigin"
+		adm = 2
+		dip = 1
+		mil = 2
+	}
+}
+1670.1.1 = {
+	monarch = {
+		name = "Kudenek-Mirza"
+		dynasty = "Borjigin"
+		adm = 2
+		dip = 3
+		mil = 3
+	}
+}
+1700.1.1 = {
+	monarch = {
+		name = "Mugmut"
+		dynasty = "Borjigin"
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1730.1.1 = {
+	monarch = {
+		name = "Baray-Mirza"
+		dynasty = "Borjigin"
+		adm = 2
+		dip = 1
+		mil = 2
+	}
+}
+1760.1.1 = {
+	monarch = {
+		name = "Ahtul"
+		dynasty = "Borjigin"
+		adm = 1
+		dip = 1
+		mil = 2
+	}
+}
+1790.1.1 = {
+	monarch = {
+		name = "Ustar"
+		dynasty = "Borjigin"
+		adm = 1
+		dip = 0
+		mil = 1
+	}
+}
+1823.1.1 = {
+	monarch = {
+		name = "Kuchuk"
+		dynasty = "Borjigin"
+		adm = 0
+		dip = 0
+		mil = 0
+	}
+}
+#done whenever

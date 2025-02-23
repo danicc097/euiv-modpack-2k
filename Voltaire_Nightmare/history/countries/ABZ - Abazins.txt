@@ -1,0 +1,175 @@
+government = tribal
+add_government_reform = tribal_federation
+government_rank = 3
+primary_culture = abkhazian
+religion = khabze
+technology_group = north_american
+capital = 3756
+
+1054.1.1 = {
+	monarch = {
+		name = "Roman"
+		dynasty = "Karmoko"
+		religion = orthodox
+		adm = 3
+		dip = 3
+		mil = 2
+	}
+}
+1100.1.1 = {
+	monarch = {
+		name = "Abdunkhan"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1145.1.1 = {
+	monarch = {
+		name = "Tukar"
+		dynasty = "Karmoko"
+		adm = 3
+		dip = 3
+		mil = 4
+	}
+}
+1190.1.1 = {
+	monarch = {
+		name = "Tukbash"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 1
+		mil = 0
+	}
+}
+1239.1.1 = { #destroyed by Mongols
+	monarch = {
+		name = "Abazins"
+		regent = yes
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1333.1.1 = {
+	monarch = {
+		name = "Verzacht"
+		dynasty = "Karmoko"
+		religion = catholic
+		adm = 1
+		dip = 4
+		mil = 1
+	}
+}
+1375.1.1 = {
+	monarch = {
+		name = "Berezok"
+		dynasty = "Karmoko"
+		adm = 1
+		dip = 4
+		mil = 1
+	}
+}
+#1415 to CIR
+
+#Restored
+1453.1.1 = {
+	monarch = {
+		name = "Belzebuk"
+		dynasty = "Karmoko"
+		adm = 2
+		dip = 3
+		mil = 2
+	}
+}
+1490.1.1 = {
+	monarch = {
+		name = "Petrezok"
+		dynasty = "Karmoko"
+		adm = 1
+		dip = 3
+		mil = 2
+	}
+}
+1530.1.1 = {
+	monarch = {
+		name = "Kansavuk"
+		dynasty = "Karmoko"
+		adm = 1
+		dip = 1
+		mil = 0
+	}
+}
+1542.1.1 = {
+	monarch = {
+		name = "Abazins"
+		regent = yes
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1717.1.1 = {
+	religion = sunni
+	religious_school = hanafi_school
+	technology_group = eastern
+}
+1807.1.1 = {
+	monarch = {
+		name = "Shuwpaqwe"
+		dynasty = "Qalawebateqo"
+		adm = 3
+		dip = 4
+		mil = 3
+	}
+}
+1827.1.1 = {
+	monarch = {
+		name = "Ismail"
+		dynasty = "Berzeq"
+		birth_date = 1763.1.1
+		adm = 3
+		dip = 3
+		mil = 3
+	}
+}
+1839.1.1 = {
+	monarch = {
+		name = "Hawduqo Mansur"
+		dynasty = "Berzeq"
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1846.1.1 = {
+	monarch = {
+		name = "Muhammad"
+		dynasty = "Amin"
+		birth_date = 1818.1.1
+		adm = 2
+		dip = 4
+		mil = 3
+	}
+}
+1859.1.1 = {
+	monarch = {
+		name = "Sefer Bey"
+		dynasty = "Zaneqo"
+		birth_date = 1798.1.1
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1860.1.1 = {
+	monarch = {
+		name = "Qerandiqo"
+		dynasty = "Berzeq"
+		birth_date = 1804.1.1
+		adm = 1
+		dip = 0
+		mil = 1
+	}
+}

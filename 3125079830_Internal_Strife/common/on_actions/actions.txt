@@ -1,0 +1,162 @@
+on_startup = {
+    every_country = {
+       add_country_modifier = { 
+    name = internal_strife
+    duration = -1  
+    desc =  internal_strife_desc
+   
+        }
+	
+
+    }
+	if = {#put here to try and have colonialism still happen
+		limit = {
+			
+			OR = {
+				tag = CAS
+				tag = POR
+				tag = FRA
+				tag = ENG
+			}
+			NOT = {is_year = 1445}
+		}
+		add_stability = 1
+	}
+}
+on_bi_yearly_pulse = {
+     every_country = {
+       add_country_modifier = { 
+    name = internal_strife
+    duration = -1  
+    desc =  internal_strife_desc
+   
+        }
+
+    }
+
+}
+on_war_won = {
+	ROOT = {
+ 		add_war_exhaustion = -4
+	}
+	FROM = {
+	add_war_exhaustion = 6
+	}
+}
+on_adm_development = {
+	if = {
+		limit = {
+	
+			NOT = {unrest = 10}
+	
+		}
+		add_province_modifier = {
+			name = developed_adm
+			duration = 700
+			
+		}
+	
+	
+	}
+	
+}
+on_dip_development = {
+
+	if = {
+		limit = {
+	
+			NOT = {unrest = 10}
+	
+		}
+		add_province_modifier = {
+			name = developed_dip
+			duration = 700
+			
+		}
+	
+	
+	}
+
+
+
+
+}
+on_mil_development = {
+
+
+
+
+	if = {
+		limit = {
+	
+			NOT = {unrest = 10}
+	
+		}
+		add_province_modifier = {
+			name = developed_mil
+			duration = 700
+			
+		}
+	
+	
+	}
+
+
+
+
+
+}
+on_country_released - {
+	THIS = {
+		every_owned_province = {
+			add_nationalism = -30
+		}	
+	}
+}
+on_siege_lost_province = {
+random = {
+	chance = 10
+	random_list = {
+    		33 = {
+        		add_base_production = -1
+    		}
+    		33 = {
+        		add_base_manpower = -1
+    		}
+    		33 = {
+    			add_base_tax = -1 
+    		
+    		}
+	}
+
+}
+
+	if = {
+	 limit = {
+	 	FROM = {
+	 		NOT = {has_matching_religion = ROOT}
+	 	}
+	 }
+	  	remove_building = temple
+	  	remove_building = cathedral
+	  	if = {
+	  	   limit = {
+	  	   
+	  	   	is_mod_active = "Extended Timeline" 
+	  	   
+	  	   }
+	  	   remove_building = glorious_monument
+	  	   
+	  	
+	  	
+	  	}
+	
+	}
+	add_prosperity = -100 
+
+}
+on_province_religion_converted = {
+	add_nationalism = -10
+
+}
+

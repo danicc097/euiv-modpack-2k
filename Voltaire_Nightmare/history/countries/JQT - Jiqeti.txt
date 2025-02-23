@@ -1,0 +1,25 @@
+government = tribal
+add_government_reform = tribal_federation
+government_rank = 3
+primary_culture = circassian
+religion = orthodox
+technology_group = eastern
+capital = 3653
+
+#Zichian Pirates
+1453.1.1 = {
+	government = republic
+	add_government_reform = pirate_republic_reform
+	government_rank = 1
+	monarch = {
+		name = "Zichian Pirates"
+		regent = yes
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1800.1.1 = {
+	religion = sunni
+	religious_school = hanafi_school
+}

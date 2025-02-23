@@ -1,0 +1,245 @@
+government = monarchy
+add_government_reform = feudalism_reform
+government_rank = 3
+primary_culture = bavarian
+religion = catholic
+technology_group = western
+capital = 903
+
+#lower bavaria
+1253.1.1 = {
+	monarch = {
+		name = "Heinrich XIII"
+		dynasty = "von Wittelsbach"
+		birth_date = 1235.11.19
+		adm = 3
+		dip = 3
+		mil = 3
+	}
+}
+1261.2.11 = {
+	heir = {
+		name = "Otto"
+		monarch_name = "Otto V"
+		dynasty = "von Wittelsbach"
+		birth_date = 1261.2.11
+		death_date = 1312.11.9
+		claim = 95
+		adm = 2
+		dip = 4
+		mil = 2
+	}
+}
+1290.2.3 = {
+	monarch = {
+		name = "Otto V"
+		dynasty = "von Wittelsbach"
+		birth_date = 1261.2.11
+		adm = 2
+		dip = 4
+		mil = 2
+	}
+}
+1305.9.29 = {
+	heir = {
+		name = "Heinrich"
+		monarch_name = "Heinrich XIV"
+		dynasty = "von Wittelsbach"
+		birth_date = 1305.9.29
+		death_date = 1339.9.1
+		claim = 95
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1312.11.9 = {
+	monarch = {
+		name = "Heinrich XIV"
+		dynasty = "von Wittelsbach"
+		birth_date = 1305.9.29
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1329.11.29 = {
+	heir = {
+		name = "Johann"
+		monarch_name = "Johann I"
+		dynasty = "von Wittelsbach"
+		birth_date = 1329.11.29
+		death_date = 1340.12.20
+		claim = 95
+		adm = 2
+		dip = 1
+		mil = 2
+	}
+}
+1339.9.1 = {
+	monarch = {
+		name = "Johann I"
+		dynasty = "von Wittelsbach"
+		birth_date = 1329.11.29
+		adm = 2
+		dip = 1
+		mil = 2
+	}
+}
+#1340 done
+1349.1.1 = {
+	monarch = {
+		name = "Stephan II"
+		dynasty = "von Wittelsbach"
+		birth_date = 1319.1.1
+		adm = 2
+		mil = 1
+		dip = 0
+	}
+	heir = {
+		name = "Friedrich"
+		monarch_name = "Friedrich I"
+		dynasty = "von Wittelsbach"
+		birth_date = 1339.1.1
+		death_date = 1393.12.4
+		claim = 90
+		adm = 2
+		mil = 2
+		dip = 2
+	}
+}
+1375.5.13 = {
+	monarch = {
+		name = "Friedrich I"
+		dynasty = "von Wittelsbach"
+		birth_date = 1339.1.1
+		adm = 2
+		mil = 2
+		dip = 2
+	}
+}
+1381.9.2 = {
+	queen = {
+		country_of_origin = MLO
+		name = "Maddalena"
+		dynasty = "Visconti"
+		birth_date = 1366.1.1
+		death_date = 1404.7.17
+		culture = lombard
+		female = yes
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1386.1.1 = {
+	heir = {
+		name = "Heinrich"
+		monarch_name = "Heinrich XVI"
+		dynasty = "von Wittelsbach"
+		birth_date = 1386.1.1
+		death_date = 1450.7.30
+		claim = 95
+		adm = 4	
+		dip = 5
+		mil = 4
+    }
+}
+1393.1.1 = {
+	monarch = {
+		name = "Heinrich XVI"
+		dynasty = "von Wittelsbach"
+		birth_date = 1386.1.1
+		adm = 4
+		dip = 5
+		mil = 4
+    }
+}
+1412.11.25 = {
+	queen = {
+		name = "Margarete"
+		dynasty = "von Habsburg"
+		country_of_origin = HAB
+		culture = austrian
+		birth_date = 1395.1.1
+		death_date = 1447.12.24
+		female = yes
+		adm = 3
+		dip = 3
+		mil = 3
+	}
+}
+1417.2.23 = {
+	heir = {
+		name = "Ludwig"
+		monarch_name = "Ludwig IX"
+		dynasty = "von Wittelsbach"
+		birth_date = 1417.2.23
+		death_date = 1479.1.18
+		claim = 95
+		adm = 4
+		dip = 3
+		mil = 2
+	}
+}
+1450.7.30 = {
+	monarch = {
+		name = "Ludwig IX"
+		dynasty = "von Wittelsbach"
+		birth_date = 1417.2.23
+		adm = 4
+		dip = 3
+		mil = 2
+	}
+	clear_scripted_personalities = yes
+	add_ruler_personality = midas_touched_personality
+}
+1452.3.21 = {
+	queen = {
+		country_of_origin = SAX
+		name = "Amalia"
+		dynasty = "von Wettin"
+		birth_date = 1436.8.4
+		death_date = 1501.11.19
+		culture = saxon
+		female = yes
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1455.8.15 = {
+	heir = {
+		name = "Georg"
+		monarch_name = "Georg I"
+		dynasty = "von Wittelsbach"
+		birth_date = 1455.8.15
+		death_date = 1503.12.1
+		claim = 95
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+}
+1479.1.18 = {
+	monarch = {
+		name = "Georg I"
+		dynasty = "von Wittelsbach"
+		birth_date = 1455.8.15
+		adm = 2
+		dip = 2
+		mil = 2
+	}
+	queen = {
+		country_of_origin = POL
+		name = "Jadwiga"
+		dynasty = "Jagiellon"
+		birth_date = 1457.9.21
+		death_date = 1502.2.18
+		culture = polish
+		female = yes
+		adm = 2
+		dip = 3
+		mil = 2
+	}
+}

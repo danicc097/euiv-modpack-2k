@@ -1,0 +1,148 @@
+has_fort_trigger = { #remove this later
+	custom_trigger_tooltip = {
+		tooltip = has_fort_building_trigger_tt
+		OR = {
+			has_building = fort_14th
+			has_building = fort_15th
+			has_building = fort_16th
+			has_building = fort_17th
+			has_building = fort_18th
+		}
+	}
+}
+
+has_fort_15th_trigger = {
+	OR = {
+		has_building = fort_15th
+		has_building = fort_16th
+		has_building = fort_17th
+		has_building = fort_18th
+	}
+}
+
+has_fort_16th_trigger = {
+	OR = {
+		has_building = fort_16th
+		has_building = fort_17th
+		has_building = fort_18th
+	}
+}
+
+has_fort_17th_trigger = {
+	OR = {
+		has_building = fort_17th
+		has_building = fort_18th
+	}
+}
+
+has_medical_building_trigger = {
+	custom_trigger_tooltip = {
+		tooltip = has_medical_building_trigger_tt
+		OR = {
+			has_building = customs_house
+			has_building = arsenal
+		}
+	}
+}
+
+has_3_advisors_trigger = {
+	has_adm_advisor = yes
+	has_dip_advisor = yes
+	has_mil_advisor = yes
+}
+
+has_3_lv2_advisors_trigger = {
+	has_adm_advisor_2 = yes
+	has_dip_advisor_2 = yes
+	has_mil_advisor_2 = yes
+}
+
+has_3_lv3_advisors_trigger = {
+	has_adm_advisor_3 = yes
+	has_dip_advisor_3 = yes
+	has_mil_advisor_3 = yes
+}
+
+has_education_building_trigger = {
+	custom_trigger_tooltip = {
+		tooltip = has_education_building_trigger_tt
+		OR = {
+			has_building = college
+			has_building = university
+		}
+	}
+}
+
+consolidated_region_trigger = {
+	NOT = { local_autonomy = 30 }
+	NOT = { unrest = 1 }
+	NOT = { controlled_by = REB }
+}
+
+frankish_empire_decision_trigger = {
+	OR = {
+		superregion = french_superregion
+		superregion = burgundian_superregion
+		superregion = lowlands_superregion
+		superregion = germanynorth_superregion
+		superregion = germanysouth_superregion
+		superregion = austria_superregion
+		superregion = switzerland_superregion
+		superregion = italy_superregion
+		region = catalunya_region
+		area = huesca_area
+		area = corsica_area
+		area = abruzzo_area
+	}
+	NOT = { region = brittany_region }
+	NOT = { region = lusatia_region }
+}
+
+participate_in_grand_crusade_trigger = {
+	custom_trigger_tooltip = {
+		tooltip = participate_in_grand_crusade_trigger_tt
+		if = {
+			limit = {
+				OR = {
+					current_age = age_of_empire
+					current_age = age_of_holy_wars
+					current_age = age_of_crisis
+				}
+				religion = catholic
+			}
+			OR = {
+				is_in_war = {
+					casus_belli = cb_grand_crusade
+				}
+				is_in_war = {
+					casus_belli = cb_grand_heretic
+				}
+			}
+		}
+		else = {
+			at_war_with_religious_enemy = yes
+		}
+	}
+}
+
+has_irish_clan_primary_culture_trigger = {
+	OR = {
+		primary_culture = dalcassian
+		primary_culture = connachta
+		primary_culture = laigin
+		primary_culture = erainn
+		primary_culture = ulaidh
+		primary_culture = eoganachta
+	}
+}
+
+has_irish_clan_province_culture_trigger = {
+	OR = {
+		culture = dalcassian
+		culture = connachta
+		culture = laigin
+		culture = erainn
+		culture = ulaidh
+		culture = eoganachta
+	}
+}

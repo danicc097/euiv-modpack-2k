@@ -1,0 +1,212 @@
+country_decisions = {
+
+	found_voc = {
+		potential = {
+			tag = NED
+			normal_or_historical_nations = yes
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { has_country_modifier = dutch_india_trade_co }
+			NOT = { has_country_flag = trade_company }
+		}
+		allow = {
+			num_of_ports = 10
+			dip_tech = 40			
+		}
+		effect = {
+			set_country_flag = trade_company
+	
+			add_country_modifier = {
+				name = "dutch_india_trade_co"
+				duration = -1
+			}		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	
+	development_of_amsterdam = {
+		potential = {
+			OR = {
+				tag = HOL
+				tag = NED
+			}
+			328 = {
+				NOT = { has_province_modifier = holland_polders }
+			}
+		}
+		allow = {
+			owns_core_province = 328 #Amsterdam
+			adm_tech = 46 # Improved Drainage
+			adm_power = 50
+		}
+		effect = {
+			add_adm_power = -50
+			328 = {
+				add_permanent_province_modifier = {
+					name = "holland_polders"
+					duration = -1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ned_unite_two_crowns = {
+		major = yes
+		potential = {
+			NOT = { has_country_flag = ned_united_crowns_flag } 
+			OR = {
+				senior_union_with = ASE
+				senior_union_with = ENG
+				senior_union_with = GBR
+			}
+			tag = NED
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2268	
+				province_id = 986	
+				province_id = 1799	
+				province_id = 2188	
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		allow = {
+			tag = NED 
+			is_at_war = no
+			if = {
+				limit = { 
+					ASE = { is_subject_of = ROOT }
+				}
+				ASE = { 
+					NOT = { liberty_desire = 5 }
+					has_opinion = { 
+						who = ROOT 
+						value = 190 
+					}
+					years_in_union_under = {
+						who = ROOT
+						years = 50
+					}
+				}
+			}
+			else_if = {
+				limit = { 
+					ENG = { is_subject_of = ROOT }
+				}
+				ENG = { 
+					NOT = { liberty_desire = 5 }
+					has_opinion = { 
+						who = ROOT 
+						value = 190 
+					}
+					years_in_union_under = {
+						who = ROOT
+						years = 50
+					}
+				}
+			}
+			else_if = {
+				limit = { 
+					GBR = { is_subject_of = ROOT }
+				}
+				GBR = { 
+					NOT = { liberty_desire = 5 }
+					has_opinion = { 
+						who = ROOT 
+						value = 190 
+					}
+					years_in_union_under = {
+						who = ROOT
+						years = 50
+					}
+				}
+			}
+			2268 = { country_or_non_sovereign_subject_holds = ROOT }
+			986 = { country_or_non_sovereign_subject_holds = ROOT }
+			1799 = { country_or_non_sovereign_subject_holds = ROOT }
+			2188 = { country_or_non_sovereign_subject_holds = ROOT }
+			adm_tech = 48
+			legitimacy_equivalent = 90 
+			stability = 3 
+		}
+		effect = { 
+			custom_tooltip = ned_unite_two_crowns_tt 
+			hidden_effect = { 
+				override_country_name = UCN
+				set_country_flag = is_UCN_flag
+			}
+			if = {
+				limit = { 
+					ASE = { is_subject_of = ROOT }
+				}
+				inherit = ASE 
+			}
+			if = {
+				limit = { 
+					ENG = { is_subject_of = ROOT }
+				}
+				inherit = ENG 
+			}
+			if = { 
+				limit = { 
+					GBR = { is_subject_of = ROOT }
+				}
+				inherit = GBR 
+			}
+			if = {
+				limit = { 
+					NOT = { accepted_culture = english } 
+				}
+				add_accepted_culture = english
+			}
+			if = {
+				limit = { 
+					NOT = { government_rank = 6 } 
+				}
+				set_government_rank = 6
+			}
+			set_country_flag = ned_united_crowns_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 }
+			}
+			add_country_modifier = {
+				name = ned_man_o_war_modifier
+				duration = -1
+			} 
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	overthrow_statist_stadholder = {
+		potential = {
+			has_estate_privilege = estate_nobles_orangist_privileges	
+			has_government_attribute = has_dutch_election			
+		}
+		allow = {
+			is_statists_in_power = yes
+			NOT = { has_ruler_flag = ned_orangist_ruler_flag }
+			is_lesser_in_union = no
+		}
+		effect = {
+			kill_ruler = yes
+			add_republican_tradition = -20
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

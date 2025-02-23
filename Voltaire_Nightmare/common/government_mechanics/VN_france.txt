@@ -1,0 +1,218 @@
+france_mechanic = {
+	alert_icon_gfx = GFX_VN_alerticons_government_mechanics
+	alert_icon_index = 2
+	available = { }
+	
+	interactions = {
+		fra_vassal_rights = {
+			icon = GFX_vassal_rights
+			trigger = {
+				adm_power_cost = 100
+				if = {
+					limit = { has_estate = estate_nobles }
+					estate_loyalty = {
+						estate = estate_nobles
+						loyalty = 50
+					}
+				}
+				any_subject_country = {
+					is_subject_of_type = appanage
+				}
+			}
+			effect = { 
+				adm_power_cost = 100
+				reduce_estate_nobles_loyalty_effect = yes
+				add_country_modifier = {
+					name = fra_vassal_rights_m
+					duration = 3650
+				}
+			}
+			cooldown_years = 10
+			cooldown_token = france_mechanic
+			cooldown_desc = A_FRENCH_POLICY
+			ai_chance = {
+				factor = 0
+				modifier = {
+					factor = 50
+					crown_land_share = 90
+					any_subject_country = {
+						is_subject_of_type = appanage
+						NOT = { liberty_desire = 50 }
+					}
+				}
+				modifier = {
+					factor = 40
+					crown_land_share = 80
+					any_subject_country = {
+						is_subject_of_type = appanage
+						NOT = { liberty_desire = 50 }
+					}
+				}
+				modifier = {
+					factor = 30
+					crown_land_share = 70
+					any_subject_country = {
+						is_subject_of_type = appanage
+						NOT = { liberty_desire = 50 }
+					}
+				}
+				modifier = {
+					factor = 20
+					crown_land_share = 60
+					any_subject_country = {
+						is_subject_of_type = appanage
+						NOT = { liberty_desire = 50 }
+					}
+				}
+				modifier = {
+					factor = 10
+					crown_land_share = 50
+					any_subject_country = {
+						is_subject_of_type = appanage
+						NOT = { liberty_desire = 50 }
+					}
+				}
+			}
+		}
+		fra_judicial_outreach = {
+			icon = GFX_judicial_outreach
+			trigger = { 
+				dip_power_cost = 100
+				if = {
+					limit = { has_estate = estate_nobles }
+					estate_loyalty = {
+						estate = estate_nobles
+						loyalty = 50
+					}
+				}
+				any_subject_country = {
+					is_subject_of_type = appanage
+				}
+			}
+			effect = { 
+				dip_power_cost = 100
+				reduce_estate_nobles_loyalty_effect = yes
+				add_country_modifier = {
+					name = fra_judicial_outreach_m
+					duration = 3650
+				}
+			}
+			cooldown_years = 10
+			cooldown_token = france_mechanic
+			cooldown_desc = A_FRENCH_POLICY
+			ai_chance = {
+				factor = 0
+				modifier = {
+					factor = 50
+					num_subjects_of_type_with_liberty_desire = {
+						type = appanage
+						liberty_desire = 50
+						value = 2
+					}
+				}
+				modifier = {
+					factor = 25
+					num_subjects_of_type_with_liberty_desire = {
+						type = appanage
+						liberty_desire = 50
+						value = 3
+					}
+				}
+				modifier = {
+					factor = 25
+					num_subjects_of_type_with_liberty_desire = {
+						type = appanage
+						liberty_desire = 50
+						value = 4
+					}
+				}
+				modifier = {
+					factor = 25
+					num_subjects_of_type_with_liberty_desire = {
+						type = appanage
+						liberty_desire = 50
+						value = 5
+					}
+				}
+			}
+		}
+		fra_confiscate_holdings = {
+			icon = GFX_confiscate_holdings
+			trigger = {
+				mil_power_cost = 100
+				if = {
+					limit = { has_estate = estate_nobles }
+					estate_loyalty = {
+						estate = estate_nobles
+						loyalty = 50
+					}
+				}
+				any_subject_country = {
+					is_subject_of_type = appanage
+				}
+			}
+			effect = {
+				mil_power_cost = 100
+				reduce_estate_nobles_loyalty_effect = yes
+				custom_tooltip = fra_confiscate_holdings.tt
+				hidden_effect = {
+					if = {
+						limit = {
+							has_government_attribute = has_appanages
+						}
+						change_variable = {
+							which = can_annex_appanages_points
+							value = 1
+						}
+					}
+				}
+			}
+			cooldown_years = 10
+			cooldown_token = france_mechanic
+			cooldown_desc = A_FRENCH_POLICY
+			ai_chance = {
+				factor = 0
+				modifier = {
+					factor = 50
+					crown_land_share = 90
+					any_subject_country = {
+						is_subject_of_type = appanage
+						NOT = { liberty_desire = 50 }
+					}
+				}
+				modifier = {
+					factor = 40
+					crown_land_share = 80
+					any_subject_country = {
+						is_subject_of_type = appanage
+						NOT = { liberty_desire = 50 }
+					}
+				}
+				modifier = {
+					factor = 30
+					crown_land_share = 70
+					any_subject_country = {
+						is_subject_of_type = appanage
+						NOT = { liberty_desire = 50 }
+					}
+				}
+				modifier = {
+					factor = 20
+					crown_land_share = 60
+					any_subject_country = {
+						is_subject_of_type = appanage
+						NOT = { liberty_desire = 50 }
+					}
+				}
+				modifier = {
+					factor = 10
+					crown_land_share = 50
+					any_subject_country = {
+						is_subject_of_type = appanage
+						NOT = { liberty_desire = 50 }
+					}
+				}
+			}
+		}
+	}
+}

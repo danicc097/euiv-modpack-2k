@@ -1,0 +1,45 @@
+government = republic
+add_government_reform = free_city
+government_rank = 1
+mercantilism = 25
+primary_culture = thuringian
+religion = catholic
+technology_group = western
+capital = 1747
+fixed_capital = 1747
+
+1054.1.1 = {
+	monarch = {
+		name = "Stadtrat"
+		adm = 2
+		dip = 2
+		mil = 2
+		regent = yes
+	}
+}
+1524.8.1 = {
+	add_government_reform = peasants_republic
+	religion = anabaptist
+	government_rank = 2
+	monarch = {
+		name = "Heinrich Pfeiffer"
+		birth_date = 1485.1.1
+		adm = 3
+		dip = 1
+		mil = 0
+	}
+	leader = {	name = "Thomas Müntzer"		type = general	fire = 1	shock = 2	manuever = 3	siege = 0	death_date = 1525.5.15 }
+}
+1525.5.15 = {
+	add_government_reform = free_city
+	religion = catholic
+	government_rank = 1
+	monarch = {
+		name = "Stadtrat"
+		adm = 2
+		dip = 2
+		mil = 2
+		regent = yes
+	}
+}
+1557.1.1 = { religion = protestant }

@@ -1,0 +1,52 @@
+guiTypes = {
+	windowType = {
+		name = "countryreligionview_aspectitem_reformed_chalcedonism"
+		backGround =""
+		position = { x=12 y=-36 }
+		size = { x=60 y=66 }
+		moveable = 0
+		dontRender = ""
+		horizontalBorder = ""
+		Orientation = "UPPER_LEFT"
+
+		iconType =
+		{
+			name ="aspect_icon"
+			spriteType = "GFX_hindu_deities_strip"
+			position = { x= -61 y = -12 }
+		}
+
+		instantTextBoxType = {
+			name = "aspect_name"
+			position = { x=13 y = -8 }
+			font = "vic_18"
+			borderSize = {x = 0 y = 0}
+			text = "AspectName"
+			maxWidth = 360
+			maxHeight = 29
+			Orientation = "UPPER_LEFT"
+			format = left
+		}
+
+		instantTextBoxType = {
+			name = "aspect_effect"
+			position = { x = 13 y = 13 }
+			font = "vic_18"
+			borderSize = {x = 0 y = 0}
+			text = "AspectEffect"
+			maxWidth = 360
+			maxHeight = 29
+			Orientation = "UPPER_LEFT"
+			format = left
+		}
+
+		guiButtonType = {
+			name = "pick_aspect"
+			position = { x=379 y = 7}
+			quadTextureSprite ="GFX_standard_button_71"
+			buttonText = "SELECT"
+			buttonFont = "vic_18"
+			Orientation = "LEFT"
+		}
+	}
+}
