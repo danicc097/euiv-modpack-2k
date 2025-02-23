@@ -6,6 +6,7 @@ tags={
 name="Internal Strife"
 dependencies={
 	"Extended Timeline"
+        "Xorme - AI"
 }
 picture="thumbnail.png"
 supported_version="v1.37.2.0"
