@@ -9,4 +9,4 @@ tags={
 }
 picture="thumbnail.png"
 supported_version="1.37.*"
-path="D:/Documents/Paradox Interactive/Europa Universalis IV/mod/Theatrum_Orbis_Terrarum__Voltaire"
+path="mod/Theatrum_Orbis_Terrarum__Voltaire"
